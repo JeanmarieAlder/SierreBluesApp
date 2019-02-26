@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Sierre Blues App V1</string>
+    <string name="app_name">Sierre Blues Festival</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="user">User</string>
+    <string name="admin">Admin</string>
+    <string name="acts">Acts</string>
+    <string name="scenes">Scenes</string>
 </resources>
