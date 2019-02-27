@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ActsActivity extends AppCompatActivity {
+import java.util.Set;
+
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acts);
+        setContentView(R.layout.activity_settings);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -29,18 +31,19 @@ public class ActsActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_about:
-                intent = new Intent(ActsActivity.this, AboutActivity.class);
-                ActsActivity.this.startActivity(intent);
+                intent = new Intent(SettingsActivity.this, AboutActivity.class);
+                SettingsActivity.this.startActivity(intent);
                 break;
 
             case R.id.action_settings:
-                intent = new Intent(ActsActivity.this, SettingsActivity.class);
-                ActsActivity.this.startActivity(intent);
+                intent = new Intent(SettingsActivity.this, SettingsActivity.class);
+                SettingsActivity.this.startActivity(intent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
         return true;
     }
+
 
 }

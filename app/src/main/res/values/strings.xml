@@ -6,4 +6,6 @@
     <string name="admin">Admin</string>
     <string name="acts">Acts</string>
     <string name="scenes">Scenes</string>
+    <string name="icon_description">Application Icon</string>
+    <string name="image_background">Background Image</string>
 </resources>
