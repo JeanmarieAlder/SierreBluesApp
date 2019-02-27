@@ -8,9 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String aName = "Login Page";
+    private TextView title_view;
     private Button btn_user;
     private Button btn_admin;
 
@@ -19,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        title_view = findViewById(R.id.main_title_view);
+        title_view.setText(aName);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
