@@ -35,7 +35,8 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/settings_background" />
+        app:layout_constraintTop_toTopOf="@+id/settings_background"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Switch
         android:id="@+id/settings_lighweight"
@@ -67,19 +68,17 @@
         android:id="@+id/settings_spinner"
         android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="82dp"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_lighweight"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/settings_title_view" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_title_view" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="22dp"
         android:text="Language"
