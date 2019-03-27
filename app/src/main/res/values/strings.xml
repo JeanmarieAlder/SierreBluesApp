@@ -16,6 +16,17 @@
     <string name="title_settings">Settings</string>
     <string name="title_welcome">Welcome Page</string>
     <string name="title_timetable">Timetable</string>
+    <string name="title_edit_act">Edit Act</string>
+    <string name="title_edit_stage">Edit Stage</string>
+    <string name="timetable_friday_label">Friday, June 13</string>
+    <string name="timetable_saturday_label">Saturday, June 14</string>
+    <string name="timetable_sunday_label">Sunday, June 15</string>
+    <string name="dash"> - </string>
+    <string name="alert_demo_data">Reload demo data</string>
+    <string name="alert_demo_data_text">Are you sure you want to erase all data and replace them with demo data?</string>
+    <string name="action_reset">Reset data</string>
+    <string name="demo_data_initiated">Demo data has been initialized.</string>
+    <string name="action_cancel">Cancel</string>
     <string-array name="acts_list">
         <item>Act1</item>
         <item>Act2</item>
@@ -53,4 +64,38 @@
         <item>Scene16</item>
     </string-array>
     <string name="icon_add">Add</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_language">Language</string>
+    <string name="pref_description_language">Choose the app language
+    </string>
+    <string-array name="pref_list_language">
+        <item>English</item>
+        <item>Francais</item>
+    </string-array>
+    <string-array name="pref_values_language">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_title_lightweight_mode">Lightweight mode</string>
+    <string name="pref_description_lightweight_mode">Enable this setting to disable images and videos</string>
+
+    <string name="pref_title_theme">Theme</string>
+    <string name="pref_description_theme">Choose which theme is applied to this app</string>
+    <string-array name="pref_list_theme">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="pref_values_theme">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
 </resources>

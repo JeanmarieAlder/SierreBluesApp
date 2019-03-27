@@ -8,24 +8,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TimetableActivity"
-            android:parentActivityName=".WelcomeActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:name=".viewmodel.BaseApp">
+
+        <activity android:name=".ui.BaseActivity"></activity>
+        <activity android:name=".ui.act.ActDetailActivity" />
+        <activity android:name=".ui.stage.EditStageActivity" />
+        <activity android:name=".ui.act.EditActActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TimetableActivity"
+            android:parentActivityName=".WelcomeActivity" />
         <activity
             android:name=".AboutActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ScenesActivity"
+            android:name=".ui.stage.StagesActivity"
             android:parentActivityName=".DashboardActivity" />
         <activity
-            android:name=".ActsActivity"
+            android:name=".ui.act.ActsActivity"
             android:parentActivityName=".DashboardActivity" />
         <activity
             android:name=".DashboardActivity"

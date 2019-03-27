@@ -2,6 +2,7 @@ package com.example.sierrebluesappv1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.sierrebluesappv1.database.AppDatabase;
+
+import static com.example.sierrebluesappv1.database.AppDatabase.initializeDemoData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView title_view;
     private Button btn_user;
     private Button btn_admin;
+    private Button btn_demo_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,19 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
+    }
+
+    public void reinitializeDatabase(View view) {
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(getString(R.string.alert_demo_data));
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage(getString(R.string.alert_demo_data_text));
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_reset), (dialog, which) ->{
+            initializeDemoData(AppDatabase.getInstance(this));
+            Toast.makeText(this, getString(R.string.demo_data_initiated), Toast.LENGTH_LONG).show();
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel), (dialog, which) -> alertDialog.dismiss());
+        alertDialog.show();
     }
 
 }

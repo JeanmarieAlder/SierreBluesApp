@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_view_scene_name"
+            android:id="@+id/text_view_third_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Name"
@@ -24,7 +24,7 @@
             android:id="@+id/text_view_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_scene_name"
+            android:layout_below="@id/text_view_third_line"
             android:text="Location 42"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 

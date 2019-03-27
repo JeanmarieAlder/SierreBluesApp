@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActsActivity">
+    tools:context=".ui.act.ActsActivity">
 
     <ImageButton
         android:id="@+id/add_acts_button"
@@ -51,14 +51,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/acts_background" />
 
-        <ListView
-            android:id="@+id/acts_dynamic"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_acts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"
-            android:entries="@array/acts_list"
-            android:scrollbars="vertical" />
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

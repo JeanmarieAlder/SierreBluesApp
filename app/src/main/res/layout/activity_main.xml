@@ -36,6 +36,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_button_user" />
 
+    <Button
+        android:id="@+id/main_button_demo_data"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_background"
+        android:onClick="reinitializeDatabase"
+        android:text="Demo Data"
+        android:textColor="@color/button_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_button_admin" />
+
     <ImageView
         android:id="@+id/main_background"
         android:layout_width="wrap_content"
