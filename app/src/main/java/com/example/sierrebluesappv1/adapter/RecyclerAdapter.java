@@ -101,7 +101,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                         return ((ActEntity) mData.get(oldItemPosition)).getIdAct().equals(((ActEntity) data.get(newItemPosition)).getIdAct());
                     }
                     if (mData instanceof StageEntity) {
-                        return Objects.equals(((StageEntity) mData.get(oldItemPosition)).getId(), ((StageEntity) data.get(newItemPosition)).getId());
+                        return Objects.equals(((StageEntity) mData.get(oldItemPosition)).getName(), ((StageEntity) data.get(newItemPosition)).getName());
                     }
                     return false;
                 }
@@ -122,7 +122,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                     if (mData instanceof StageEntity) {
                         StageEntity newStage = (StageEntity) data.get(newItemPosition);
                         StageEntity oldStage = (StageEntity) mData.get(newItemPosition);
-                        return Objects.equals(newStage.getId(), oldStage.getId())
+                        return Objects.equals(newStage.getName(), oldStage.getName())
                                 && Objects.equals(newStage.getName(), oldStage.getName())
                                 && Objects.equals(newStage.getLocation(), oldStage.getLocation())
                                 && Objects.equals(newStage.getMaxCapacity(), oldStage.getMaxCapacity())

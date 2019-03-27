@@ -1,0 +1,152 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "938dace83aa69dc9d1a024b3204d751f",
+    "entities": [
+      {
+        "tableName": "Act",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`IdAct` INTEGER PRIMARY KEY AUTOINCREMENT, `ArtistName` TEXT, `ArtistCountry` TEXT, `Description` TEXT, `Genre` TEXT, `Date` TEXT, `StartTime` TEXT, `Price` REAL NOT NULL, `ArtistWebsite` TEXT, `IdStage` TEXT, FOREIGN KEY(`IdStage`) REFERENCES `Stage`(`StageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idAct",
+            "columnName": "IdAct",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "artistName",
+            "columnName": "ArtistName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "artistCountry",
+            "columnName": "ArtistCountry",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "Description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "genre",
+            "columnName": "Genre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "Date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "StartTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "Price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "artistWebsite",
+            "columnName": "ArtistWebsite",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idStage",
+            "columnName": "IdStage",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "IdAct"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Act_IdStage",
+            "unique": false,
+            "columnNames": [
+              "IdStage"
+            ],
+            "createSql": "CREATE  INDEX `index_Act_IdStage` ON `${TABLE_NAME}` (`IdStage`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Stage",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "IdStage"
+            ],
+            "referencedColumns": [
+              "StageName"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Stage",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`StageName` TEXT NOT NULL, `Location` TEXT, `LocationWebsite` TEXT, `MaxCapacity` INTEGER NOT NULL, `SeatingPlaces` INTEGER NOT NULL, PRIMARY KEY(`StageName`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "StageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "location",
+            "columnName": "Location",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "locationWebsite",
+            "columnName": "LocationWebsite",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "maxCapacity",
+            "columnName": "MaxCapacity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seatingPlaces",
+            "columnName": "SeatingPlaces",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "StageName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"938dace83aa69dc9d1a024b3204d751f\")"
+    ]
+  }
+}

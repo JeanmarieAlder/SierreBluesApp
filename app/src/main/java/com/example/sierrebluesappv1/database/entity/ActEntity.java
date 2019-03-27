@@ -12,7 +12,7 @@ import java.util.UUID;
         foreignKeys =
         @ForeignKey(
                 entity = StageEntity.class,
-                parentColumns = "ids",
+                parentColumns = "StageName",
                 childColumns = "IdStage",
                 onDelete = ForeignKey.CASCADE
         ), indices = {
@@ -50,11 +50,11 @@ public class ActEntity {
     private String artistWebsite;
 
     @ColumnInfo(name = "IdStage")
-    private long idStage;
+    private String idStage;
 
     public ActEntity(String artistName, String artistCountry,
                      String description, String genre, String startTime,
-                     String date, float price, String artistWebsite, long idStage) {
+                     String date, float price, String artistWebsite, String idStage) {
         this.artistName = artistName;
         this.artistCountry = artistCountry;
         this.description = description;
@@ -138,11 +138,11 @@ public class ActEntity {
         this.artistWebsite = artistWebsite;
     }
 
-    public long getIdStage() {
+    public String getIdStage() {
         return idStage;
     }
 
-    public void setIdStage(long idStage) {
+    public void setIdStage(String idStage) {
         this.idStage = idStage;
     }
 }

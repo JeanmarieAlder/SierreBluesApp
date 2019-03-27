@@ -13,7 +13,7 @@ public class BaseApp extends Application {
 
     public AppDatabase getDatabase() { return (AppDatabase) AppDatabase.getInstance(this);}
 
-    public static ActRepository getActRepository() {
+    public ActRepository getActRepository() {
         return ActRepository.getInstance();
     }
 

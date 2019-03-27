@@ -15,8 +15,8 @@ import java.util.List;
 @Dao
 public interface StageDao {
 
-    @Query("SELECT * FROM Stage WHERE ids = :id")
-    LiveData<StageEntity> getById(String id);
+    @Query("SELECT * FROM Stage WHERE StageName = :sceneId")
+    LiveData<StageEntity> getByName(String sceneId);
 
     @Query("SELECT * FROM Stage")
     LiveData<List<StageEntity>> getAll();

@@ -36,7 +36,9 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (instance == null) {
                     instance = buildDatabase(context.getApplicationContext());
+
                     instance.updateDatabaseCreated(context.getApplicationContext());
+
                 }
             }
         }
@@ -62,7 +64,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             database.setDatabaseCreated();
                         });
                     }
-                }).build();
+                }).fallbackToDestructiveMigration().build();
     }
 
     public static void initializeDemoData(final AppDatabase database) {

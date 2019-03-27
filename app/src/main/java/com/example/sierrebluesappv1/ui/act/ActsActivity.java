@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.sierrebluesappv1.AboutActivity;
 import com.example.sierrebluesappv1.R;
@@ -39,6 +40,7 @@ public class ActsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acts);
         //getLayoutInflater().inflate(R.layout.activity_acts, frameLayout);
+        Toast.makeText(this, getString(R.string.message_delete_edit), Toast.LENGTH_LONG).show();
 
         rView = (RecyclerView)findViewById(R.id.recycler_view_acts);
         //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

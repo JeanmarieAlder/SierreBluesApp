@@ -31,7 +31,7 @@ public class StageRepository {
     }
 
     public LiveData<StageEntity> getStage(final String idStage, Application application){
-        return ((BaseApp) application).getDatabase().stageDao().getById(idStage);
+        return ((BaseApp) application).getDatabase().stageDao().getByName(idStage);
     }
 
     public LiveData<List<StageEntity>> getAll(Application application){

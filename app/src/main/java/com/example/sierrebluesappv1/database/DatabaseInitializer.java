@@ -40,41 +40,41 @@ public class DatabaseInitializer {
 
         addAct(db,
                 "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", 4
+                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", 5
+                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", 6
+                "20:00", "saturday", 50.0f, "www.hevs.ch", "Main scene"
         );
 
         addAct(db,
                 "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", 4
+                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", 5
+                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", 6
+                "20:00", "saturday", 50.0f, "www.hevs.ch", "THL"
         );
 
         addAct(db,
                 "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", 4
+                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", 5
+                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
         );
         addAct(db,
                 "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", 6
+                "20:00", "saturday", 50.0f, "www.hevs.ch", "THL"
         );
     }
 
@@ -86,9 +86,9 @@ public class DatabaseInitializer {
 
     private static void addAct(AppDatabase db, String name, String country,
                                String descr, String genre, String startTime, String date,
-                               float price, String website, int idstage) {
+                               float price, String website, String stageName) {
         ActEntity act = new ActEntity(name,country,descr,genre,startTime,date,
-                price,website,(long)idstage);
+                price,website,stageName);
         db.actDao().insert(act);
 
     }

@@ -2,17 +2,16 @@ package com.example.sierrebluesappv1.database.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "Stage")
+@Entity(tableName = "Stage",  primaryKeys = {"StageName"})
 public class StageEntity {
 
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ids")
-    private long id;
-
-    @ColumnInfo(name = "Name")
+    @NonNull
+    @ColumnInfo(name = "StageName")
     private String name;
 
     @ColumnInfo(name = "Location")
@@ -36,13 +35,6 @@ public class StageEntity {
         this.seatingPlaces = seatingPlaces;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long idStage) {
-        this.id = idStage;
-    }
 
     public String getName() {
         return name;

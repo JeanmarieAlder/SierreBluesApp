@@ -51,7 +51,7 @@ public class ActsListViewModel extends AndroidViewModel {
 
         public Factory(@NonNull Application application) {
             this.application = application;
-            actRepository =  BaseApp.getActRepository();
+            actRepository =  ((BaseApp)application).getActRepository();
             }
 
         @Override

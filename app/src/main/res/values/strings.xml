@@ -27,6 +27,7 @@
     <string name="action_reset">Reset data</string>
     <string name="demo_data_initiated">Demo data has been initialized.</string>
     <string name="action_cancel">Cancel</string>
+    <string name="message_delete_edit">Long press to Edit or Delete</string>
     <string-array name="acts_list">
         <item>Act1</item>
         <item>Act2</item>
