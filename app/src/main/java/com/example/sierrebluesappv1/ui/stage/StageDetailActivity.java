@@ -1,4 +1,4 @@
-package com.example.sierrebluesappv1.ui.act;
+package com.example.sierrebluesappv1.ui.stage;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +10,12 @@ import com.example.sierrebluesappv1.AboutActivity;
 import com.example.sierrebluesappv1.R;
 import com.example.sierrebluesappv1.SettingsActivity;
 
-public class ActDetailActivity extends AppCompatActivity {
+public class StageDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_detail);
+        setContentView(R.layout.activity_stage_detail);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -33,17 +33,17 @@ public class ActDetailActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_about:
-                intent = new Intent(ActDetailActivity.this, AboutActivity.class);
-                ActDetailActivity.this.startActivity(intent);
+                intent = new Intent(StageDetailActivity.this, AboutActivity.class);
+                StageDetailActivity.this.startActivity(intent);
                 break;
 
             case R.id.action_settings:
-                intent = new Intent(ActDetailActivity.this, SettingsActivity.class);
-                ActDetailActivity.this.startActivity(intent);
+                intent = new Intent(StageDetailActivity.this, SettingsActivity.class);
+                StageDetailActivity.this.startActivity(intent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }

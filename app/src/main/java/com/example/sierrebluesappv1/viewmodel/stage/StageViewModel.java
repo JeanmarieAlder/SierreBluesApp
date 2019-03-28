@@ -22,14 +22,14 @@ public class StageViewModel extends AndroidViewModel {
     private final MediatorLiveData<StageEntity> observableStage;
 
     public StageViewModel(@NonNull Application application,
-                        final Long stageId, StageRepository stageRepository) {
+                        final String stageId, StageRepository stageRepository) {
         super(application);
 
         this.application = application;
         repository = stageRepository;
         observableStage = new MediatorLiveData<>();
         observableStage.setValue(null); //Null by default until we get data from DB
-        LiveData<StageEntity> stage = repository.getStage(stageId.toString(), application);
+        LiveData<StageEntity> stage = repository.getStage(stageId, application);
 
         //observer changes from db and forward them
         observableStage.addSource(stage, observableStage::setValue);
@@ -43,11 +43,11 @@ public class StageViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final Long stageId;
+        private final String stageId;
 
         private final StageRepository repository;
 
-        public Factory(@NonNull Application application, Long stageId) {
+        public Factory(@NonNull Application application, String stageId) {
             this.application = application;
             this.stageId = stageId;
             repository = ((BaseApp) application).getStageRepository();
@@ -71,7 +71,11 @@ public class StageViewModel extends AndroidViewModel {
         repository.insert(stage, callback, application);
     }
 
-    public void updateAccount(StageEntity stage, OnAsyncEventListener callback) {
+    public void deleteStage(StageEntity stage, OnAsyncEventListener callback) {
+        repository.delete(stage, callback, application);
+    }
+
+    public void updateStage(StageEntity stage, OnAsyncEventListener callback) {
         repository.update(stage, callback, application);
     }
 }

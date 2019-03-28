@@ -66,6 +66,10 @@ public class ActEntity {
         this.idStage = idStage;
     }
 
+    public ActEntity() {
+
+    }
+
     public Long getIdAct() {
         return idAct;
     }

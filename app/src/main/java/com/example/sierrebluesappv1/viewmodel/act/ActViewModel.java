@@ -69,6 +69,10 @@ public class ActViewModel extends AndroidViewModel {
         repository.insert(act, callback, application);
     }
 
+    public void deleteAct(ActEntity act, OnAsyncEventListener callback){
+        repository.delete(act, callback, application);
+    }
+
     public void updateAct(ActEntity act, OnAsyncEventListener callback) {
         repository.update(act, callback, application);
     }

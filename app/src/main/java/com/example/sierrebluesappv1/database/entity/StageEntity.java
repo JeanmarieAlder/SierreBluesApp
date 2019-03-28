@@ -35,6 +35,10 @@ public class StageEntity {
         this.seatingPlaces = seatingPlaces;
     }
 
+    public StageEntity() {
+
+    }
+
 
     public String getName() {
         return name;

@@ -51,12 +51,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/scenes_background" />
 
-        <ListView
-            android:id="@+id/scenes_dynamic"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_stages"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:entries="@array/scenes_list"
-            android:scrollbars="vertical" />
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

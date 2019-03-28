@@ -13,6 +13,8 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.sierrebluesappv1.AboutActivity;
@@ -34,37 +36,34 @@ import static com.example.sierrebluesappv1.database.AppDatabase.initializeDemoDa
 
 public class ActsActivity extends AppCompatActivity {
 
-    private static final String TAG = "ActsActivity";
 
     private RecyclerAdapter<ActEntity> adapter;
     private List<ActEntity> acts;
     private ActsListViewModel listViewModel;
     private RecyclerView rView;
 
+    private ImageButton addButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acts);
-        //getLayoutInflater().inflate(R.layout.activity_acts, frameLayout);
         Toast.makeText(this, getString(R.string.message_delete_edit), Toast.LENGTH_LONG).show();
 
+        addButton = findViewById(R.id.add_acts_button);
+        addButton.setOnClickListener(view -> {
+            addSelected();
+        });
+
         rView = (RecyclerView)findViewById(R.id.recycler_view_acts);
-        //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rView.getContext(),
-                LinearLayoutManager.VERTICAL);
-        rView.addItemDecoration(dividerItemDecoration);
-        registerForContextMenu(rView);
 
         acts = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Log.d(TAG, "clicked position:" + position);
-                Log.d(TAG, "clicked on: " + acts.get(position).getArtistName());
-
                 Intent intent = new Intent(ActsActivity.this, ActDetailActivity.class);
                 intent.setFlags(
                         Intent.FLAG_ACTIVITY_NO_ANIMATION |
@@ -73,29 +72,26 @@ public class ActsActivity extends AppCompatActivity {
                 intent.putExtra("actId", acts.get(position).getIdAct());
                 startActivity(intent);
             }
-
-            @Override
-            public void onItemLongClick(View v, int position) {
-                Log.d(TAG, "longClicked position:" + position);
-                Log.d(TAG, "longClicked on: " + acts.get(position).getArtistName());
-
-
-                //createDeleteDialog(position);
-            }
         });
 
         ActsListViewModel.Factory factory = new ActsListViewModel.Factory(
                 getApplication());
 
         listViewModel = ViewModelProviders.of(this, factory).get(ActsListViewModel.class);
-        listViewModel.getAllActs().observe(this, accountEntities -> {
-            if (accountEntities != null) {
-                acts = accountEntities;
+        listViewModel.getAllActs().observe(this, actEntities -> {
+            if (actEntities != null) {
+                acts = actEntities;
                 adapter.setData(acts);
             }
         });
 
         rView.setAdapter(adapter);
+    }
+
+    private void addSelected() {
+        Intent intent = new Intent(ActsActivity.this, ActEditActivity.class);
+        intent.putExtra("isEdit", false);
+        ActsActivity.this.startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -147,12 +143,14 @@ public class ActsActivity extends AppCompatActivity {
                 listViewModel.deleteAct(acts.get(position), new OnAsyncEventListener() {
                     @Override
                     public void onSuccess() {
-
+                        Toast.makeText(getApplicationContext(),
+                                "Act deleted", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Exception e) {
-
+                        Toast.makeText(getApplicationContext(),
+                                "Error, couldn't delete the act", Toast.LENGTH_LONG).show();
                     }
                 });
                 return true;
