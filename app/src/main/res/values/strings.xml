@@ -28,6 +28,10 @@
     <string name="demo_data_initiated">Demo data has been initialized.</string>
     <string name="action_cancel">Cancel</string>
     <string name="message_delete_edit">Long press to Edit or Delete</string>
+    <string name="alert_edit_delete">Edit / Delete entry?</string>
+
+
+
     <string-array name="acts_list">
         <item>Act1</item>
         <item>Act2</item>

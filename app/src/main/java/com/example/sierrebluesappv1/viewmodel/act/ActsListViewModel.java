@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.database.repository.ActRepository;
+import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
 import java.util.List;
@@ -39,6 +40,8 @@ public class ActsListViewModel extends AndroidViewModel {
         observableAct.addSource(acts, observableAct::setValue);
     }
 
+
+
     /**
      * A creator is used to inject the account id into the ViewModel
      */
@@ -59,6 +62,10 @@ public class ActsListViewModel extends AndroidViewModel {
             //noinspection unchecked
             return (T) new ActsListViewModel(application, actRepository);
         }
+    }
+
+    public void deleteAct(ActEntity act, OnAsyncEventListener callback){
+        repository.delete(act, callback, application);
     }
 
     public LiveData<List<ActEntity>> getAllActs(){

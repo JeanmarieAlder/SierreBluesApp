@@ -4,7 +4,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,6 +24,11 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
     private List<T> mData;
     private RecyclerViewItemClickListener mListener;
+    private static int pos;
+
+    public static int getPos() {
+        return pos;
+    }
 
     public RecyclerAdapter(RecyclerViewItemClickListener listener) {
 
@@ -35,10 +43,11 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                 .inflate(R.layout.recycler_item, viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(v);
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
-        v.setOnLongClickListener(view -> {
-            mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
-            return true;
-        });
+        //v.setOnLongClickListener(view -> {
+        //    mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
+        //    return true;
+        //});
+
         return viewHolder;
     }
 
@@ -138,16 +147,32 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         private TextView textViewName;
         private TextView textViewDateAddress;
         private TextView textViewScenePlaces;
+        private CardView cardView;
+        private int position;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.text_view_title_name);
             textViewDateAddress = itemView.findViewById(R.id.text_view_second_line);
             textViewScenePlaces = itemView.findViewById(R.id.text_view_third_line);
+            cardView = itemView.findViewById(R.id.recycler_card_view);
+            cardView.setOnCreateContextMenuListener(this);
+
+
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+            MenuItem edit = menu.add(Menu.NONE, 1, 1, "Edit");
+            MenuItem delete = menu.add(Menu.NONE, 2,2, "Delete");
+            pos = getAdapterPosition();
+        }
+
     }
+
 }

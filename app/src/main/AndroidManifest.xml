@@ -14,7 +14,7 @@
         <activity android:name=".ui.BaseActivity"></activity>
         <activity android:name=".ui.act.ActDetailActivity" />
         <activity android:name=".ui.stage.EditStageActivity" />
-        <activity android:name=".ui.act.EditActActivity" />
+        <activity android:name=".ui.act.ActEditActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
