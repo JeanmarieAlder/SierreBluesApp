@@ -4,6 +4,7 @@
     <string name="settings">Settings</string>
     <string name="user">User</string>
     <string name="admin">Admin</string>
+    <string name="demo_data">Demo Data</string>
     <string name="acts">Acts</string>
     <string name="scenes">Scenes</string>
     <string name="icon_description">Application Icon</string>
@@ -29,6 +30,33 @@
     <string name="action_cancel">Cancel</string>
     <string name="message_delete_edit">Long press to Edit or Delete</string>
     <string name="alert_edit_delete">Edit / Delete entry?</string>
+    <string name="act_edit_text_name">Artist</string>
+    <string name="artist_name">Artist Name:</string>
+    <string name="artist_country">Artist Country:</string>
+    <string name="act_edit_artist_country">Country</string>
+    <string name="artist_genre">Genre:</string>
+    <string name="act_edit_text_genre">Genre</string>
+    <string name="artist_date">Date:</string>
+    <string name="act_edit_datetime">Date</string>
+    <string name="artist_start_time">Start Time:</string>
+    <string name="act_edit_start_time">Start Time</string>
+    <string name="artist_price">Price:</string>
+    <string name="act_edit_price">Price</string>
+    <string name="artist_website">Website:</string>
+    <string name="act_edit_website">URL</string>
+    <string name="artist_stage">Stage:</string>
+    <string name="act_edit_stage">Stage</string>
+    <string name="act_delete">Delete</string>
+    <string name="act_save">Save</string>
+    <string name="act_cancel">Cancel</string>
+    <string name="recycler_title">Title</string>
+    <string name="recycler_date_address">Date or address</string>
+    <string name="recycler_scene_duration">Scene name or duration</string>
+    <string name="stage_name">Name</string>
+    <string name="stage_location">Location</string>
+    <string name="stage_capacity">Capacity</string>
+    <string name="stage_places">Places</string>
+
 
 
 
@@ -81,7 +109,7 @@
     </string>
     <string-array name="pref_list_language">
         <item>English</item>
-        <item>Francais</item>
+        <item>Français</item>
     </string-array>
     <string-array name="pref_values_language">
         <item>1</item>

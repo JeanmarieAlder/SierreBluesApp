@@ -17,7 +17,7 @@
             android:id="@+id/text_view_third_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/stage_name"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_third_line"
-            android:text="Location 42"
+            android:text="@string/stage_location"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_location"
-            android:text="Capacity"
+            android:text="@string/stage_capacity"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/text_view_capacity"
             android:layout_toEndOf="@id/text_view_capacity"
-            android:text=" Places"
+            android:text="@string/stage_places"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     </RelativeLayout>

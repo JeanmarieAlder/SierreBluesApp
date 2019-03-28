@@ -42,11 +42,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/act_edit_text_name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timetable_title_view2" />
+        app:layout_constraintTop_toBottomOf="@+id/timetable_title_view2"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView2"
@@ -55,7 +57,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Artist name:"
+        android:text="@string/artist_name"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -71,10 +73,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Country"
+        android:hint="@string/act_edit_artist_country"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_name" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_name"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView3"
@@ -82,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Artist country:"
+        android:text="@string/artist_country"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -98,10 +102,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Genre"
+        android:hint="@string/act_edit_text_genre"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_country" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_country"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView4"
@@ -109,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Genre:"
+        android:text="@string/artist_genre"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -125,10 +131,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Date"
-        android:inputType="textPersonName"
+        android:hint="@string/act_edit_datetime"
+        android:importantForAutofill="no"
+        android:inputType="datetime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_genre" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_genre"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView5"
@@ -136,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Date:"
+        android:text="@string/artist_date"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -152,10 +160,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Start Time"
-        android:inputType="textPersonName"
+        android:hint="@string/act_edit_start_time"
+        android:importantForAutofill="no"
+        android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_date" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_date"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView6"
@@ -163,7 +173,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Start time:"
+        android:text="@string/artist_start_time"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -179,10 +189,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Price"
+        android:hint="@string/act_edit_price"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/acts_background2"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_stime" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_stime"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView7"
@@ -190,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Price:"
+        android:text="@string/artist_price"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -206,25 +218,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Website"
-        android:inputType="textPersonName"
+        android:hint="@string/act_edit_website"
+        android:importantForAutofill="no"
+        android:inputType="textWebEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Price:"
-        android:textAlignment="textEnd"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_price"
-        app:layout_constraintEnd_toStartOf="@+id/act_edit_text_price"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView9"
@@ -232,7 +231,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Artist website:"
+        android:text="@string/artist_website"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -248,10 +247,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Stage"
+        android:hint="@string/act_edit_stage"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_website" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_website"
+        tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/textView10"
@@ -259,7 +260,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Stage name:"
+        android:text="@string/artist_stage"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -276,7 +277,7 @@
         android:layout_marginTop="64dp"
         android:background="@drawable/button_background"
         android:onClick="deleteSelected"
-        android:text="Delete"
+        android:text="@string/act_delete"
         android:textColor="@color/button_text_color"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -288,7 +289,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="212dp"
         android:background="@drawable/button_background"
-        android:text="Save"
+        android:text="@string/act_save"
         android:textColor="@color/button_text_color"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_act_delete_button"
@@ -302,7 +303,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_background"
         android:onClick="cancelSelected"
-        android:text="Cancel"
+        android:text="@string/act_cancel"
         android:textColor="@color/button_text_color"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:background="#00000000"
-            android:text="Title"
+            android:text="@string/recycler_title"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="2dp"
             android:background="#00000000"
-            android:text="Date or Address"
+            android:text="@string/recycler_date_address"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_below="@+id/text_view_second_line"
             android:layout_marginTop="2dp"
             android:background="#00000000"
-            android:text="SceneName or duration" />
+            android:text="@string/recycler_scene_duration" />
 
     </RelativeLayout>
 

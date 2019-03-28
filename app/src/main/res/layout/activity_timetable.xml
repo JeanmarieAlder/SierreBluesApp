@@ -47,7 +47,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timetable_title_view" />
+        app:layout_constraintTop_toBottomOf="@+id/timetable_title_view"
+        android:focusable="true" />
 
     <ListView
         android:id="@+id/friday_dynamic"
@@ -73,7 +74,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friday_dynamic" />
+        app:layout_constraintTop_toBottomOf="@+id/friday_dynamic"
+        android:focusable="true" />
 
     <ListView
         android:id="@+id/saturday_dynamic"

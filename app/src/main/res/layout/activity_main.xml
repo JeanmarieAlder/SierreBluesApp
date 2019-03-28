@@ -45,7 +45,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_background"
         android:onClick="reinitializeDatabase"
-        android:text="Demo Data"
+        android:text="@string/demo_data"
         android:textColor="@color/button_text_color"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
