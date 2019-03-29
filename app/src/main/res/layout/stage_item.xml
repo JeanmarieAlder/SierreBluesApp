@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_view_third_line"
+            android:id="@+id/text_view_stage_name_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/stage_name"
@@ -24,7 +24,8 @@
             android:id="@+id/text_view_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_third_line"
+            android:layout_below="@id/text_view_stage_name_item"
+            android:textColor="#000000"
             android:text="@string/stage_location"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
@@ -34,14 +35,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_location"
             android:text="@string/stage_capacity"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/text_view_capacity"
-            android:layout_toEndOf="@id/text_view_capacity"
-            android:text="@string/stage_places"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     </RelativeLayout>

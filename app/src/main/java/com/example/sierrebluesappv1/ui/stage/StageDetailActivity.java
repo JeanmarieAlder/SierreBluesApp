@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class StageDetailActivity extends AppCompatActivity {
     StageEntity stage;
     private StageViewModel viewModel;
     private String stageId;
+    private boolean isUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +74,18 @@ public class StageDetailActivity extends AppCompatActivity {
         buttonDelete = findViewById(R.id.detail_stage_delete_button);
         buttonCancel = findViewById(R.id.detail_stage_cancel_button);
 
-        buttonEdit.setOnClickListener(view -> {
-            edit(tvName.getText().toString());
-        });
-        buttonCancel.setOnClickListener(view -> {
-            onBackPressed();
-        });
-        buttonDelete.setOnClickListener(view -> {
-            deleteSelected();
-        });
+        isUser = getIntent().getBooleanExtra("isUser", false);
+
+        if(isUser){
+            buttonDelete.setVisibility(View.GONE);
+            buttonEdit.setVisibility(View.GONE);
+        }else{
+            buttonEdit.setOnClickListener(view -> edit(stage.getName()));
+
+            buttonDelete.setOnClickListener(view -> deleteSelected());
+        }
+
+        buttonCancel.setOnClickListener(view -> onBackPressed());
 
         tvName = findViewById(R.id.stage_detail_text_name);
         tvLocation = findViewById(R.id.stage_detail_text_address);

@@ -40,7 +40,17 @@ public class ActsListViewModel extends AndroidViewModel {
         observableAct.addSource(acts, observableAct::setValue);
     }
 
+    public LiveData<List<ActEntity>> getActsByDay(String day) {
+        return repository.getActsByDay(day, application);
+    }
 
+    public void deleteAct(ActEntity act, OnAsyncEventListener callback){
+        repository.delete(act, callback, application);
+    }
+
+    public LiveData<List<ActEntity>> getAllActs(){
+        return observableAct;
+    }
 
     /**
      * A creator is used to inject the account id into the ViewModel
@@ -64,11 +74,6 @@ public class ActsListViewModel extends AndroidViewModel {
         }
     }
 
-    public void deleteAct(ActEntity act, OnAsyncEventListener callback){
-        repository.delete(act, callback, application);
-    }
 
-    public LiveData<List<ActEntity>> getAllActs(){
-        return observableAct;
-    }
+
 }

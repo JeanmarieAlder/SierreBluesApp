@@ -40,7 +40,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // create a new view
         CardView v = (CardView) LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recycler_item, viewGroup, false);
+                .inflate(R.layout.act_item, viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(v);
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
         //v.setOnLongClickListener(view -> {
@@ -61,7 +61,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
             holder.textViewDateAddress.setText(((ActEntity) item).getDate()
                     + " - " + ((ActEntity) item).getStartTime());
             String places = String.valueOf(((ActEntity) item).getIdStage());
-            holder.textViewScenePlaces.setText("Stage " + places);
+            holder.textViewScenePlaces.setText(places);
         }
 
 
@@ -158,7 +158,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
             super(itemView);
             textViewName = itemView.findViewById(R.id.text_view_title_name);
             textViewDateAddress = itemView.findViewById(R.id.text_view_second_line);
-            textViewScenePlaces = itemView.findViewById(R.id.text_view_third_line);
+            textViewScenePlaces = itemView.findViewById(R.id.text_view_stage_name_item);
             cardView = itemView.findViewById(R.id.recycler_card_view);
             cardView.setOnCreateContextMenuListener(this);
 
