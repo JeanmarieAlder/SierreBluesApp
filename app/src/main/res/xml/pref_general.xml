@@ -23,17 +23,17 @@
         android:summary="@string/pref_description_lightweight_mode"
         android:title="@string/pref_title_lightweight_mode" />
 
-    <ListPreference
-        android:defaultValue="1"
-        android:entries="@array/pref_list_theme"
-        android:entryValues="@array/pref_values_theme"
-        android:key="pref_key_theme"
-        android:summary="@string/pref_description_theme"
-        android:title="@string/pref_title_theme" />
+    <!--<ListPreference-->
+        <!--android:defaultValue="1"-->
+        <!--android:entries="@array/pref_list_theme"-->
+        <!--android:entryValues="@array/pref_values_theme"-->
+        <!--android:key="pref_key_theme"-->
+        <!--android:summary="@string/pref_description_theme"-->
+        <!--android:title="@string/pref_title_theme" />-->
 
     <SwitchPreference
         android:defaultValue="false"
-        android:key="switch_preference_1"
+        android:key="pref_key_switch"
         android:summary="@string/pref_description_switch"
         android:title="@string/pref_title_switch_theme" />
 
