@@ -4,19 +4,17 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.sierrebluesappv1.AboutActivity;
 import com.example.sierrebluesappv1.R;
 import com.example.sierrebluesappv1.SettingsActivity;
-import com.example.sierrebluesappv1.WelcomeActivity;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
@@ -27,14 +25,14 @@ public class ActEditActivity extends AppCompatActivity {
     private ActEntity act;
     private ActViewModel viewModel;
     private boolean editMode;
+    private ArrayAdapter<CharSequence> adapter;
 
     private EditText eaName;
     private EditText eaCountry;
     private EditText egenre;
-    private EditText edate;
+    private Spinner edate;
     private EditText estartTime;
     private EditText eprice;
-    private EditText eaWebsite;
     private EditText estage;
 
     private Button buttonSave;
@@ -70,8 +68,12 @@ public class ActEditActivity extends AppCompatActivity {
         edate = findViewById(R.id.act_edit_text_date);
         estartTime = findViewById(R.id.act_edit_text_stime);
         eprice = findViewById(R.id.act_edit_text_price);
-        eaWebsite = findViewById(R.id.act_edit_text_website);
         estage = findViewById(R.id.act_edit_text_stage);
+
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.dates, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        edate.setAdapter(adapter);
 
         buttonSave = findViewById(R.id.edit_act_save_button);
         buttonCancel = findViewById(R.id.edit_act_cancel_button);
@@ -79,14 +81,13 @@ public class ActEditActivity extends AppCompatActivity {
 
         buttonSave.setOnClickListener(view -> {
             saveChanges();
-            onBackPressed();
         });
         buttonCancel.setOnClickListener(view -> {
             cancelSelected();
         });
         buttonDelete.setOnClickListener(view -> {
             deleteSelected();
-            onBackPressed();
+
         });
 
         //get act ID from intent and set edit mode to false if new act
@@ -95,12 +96,19 @@ public class ActEditActivity extends AppCompatActivity {
     }
 
     private void saveChanges() {
+        String timeCheck = estartTime.getText().toString();
+        if(timeCheck.indexOf(':') == -1 ||
+                timeCheck.indexOf(':') != timeCheck.lastIndexOf(':'))
+        {
+            Toast.makeText(getApplicationContext(), "Invalid start time", Toast.LENGTH_LONG).show();
+            return;
+        }
         if(editMode){
             act.setArtistName(eaName.getText().toString());
             act.setArtistCountry(eaCountry.getText().toString());
-            act.setDescription("Not implemented yet");
+            act.setArtistImage("Not implemented yet");
             act.setGenre(egenre.getText().toString());
-            act.setDate(edate.getText().toString());
+            act.setDate(edate.getSelectedItem().toString());
             act.setStartTime(estartTime.getText().toString());
 
             //convert string from float.
@@ -114,14 +122,14 @@ public class ActEditActivity extends AppCompatActivity {
                 e.getMessage();
                 act.setPrice(0f);
             }
-
-            act.setArtistWebsite(eaWebsite.getText().toString());
             act.setIdStage(estage.getText().toString());
 
             viewModel.updateAct(act, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Toast.makeText(getApplicationContext(), "Update succesful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Update succesful", Toast.LENGTH_LONG).show();
+                    onBackPressed(); //finally, go back to previous screen
                 }
 
                 @Override
@@ -140,9 +148,8 @@ public class ActEditActivity extends AppCompatActivity {
             ActEntity newAct = new ActEntity();
             newAct.setArtistName(eaName.getText().toString());
             newAct.setArtistCountry(eaCountry.getText().toString());
-            newAct.setDescription("Not implemented yet");
             newAct.setGenre(egenre.getText().toString());
-            newAct.setDate(edate.getText().toString());
+            newAct.setDate(edate.getSelectedItem().toString());
             newAct.setStartTime(estartTime.getText().toString());
 
             //convert string from float.
@@ -156,12 +163,13 @@ public class ActEditActivity extends AppCompatActivity {
                 e.getMessage();
                 newAct.setPrice(0f);
             }
-
-            newAct.setArtistWebsite(eaWebsite.getText().toString());
             newAct.setIdStage(estage.getText().toString());
             viewModel.createAct(newAct, new OnAsyncEventListener() {
                 @Override
-                public void onSuccess() {Toast.makeText(getApplicationContext(), "Creation succesful", Toast.LENGTH_LONG).show();}
+                public void onSuccess() {
+                    Toast.makeText(getApplicationContext(), "Creation succesful", Toast.LENGTH_LONG).show();
+                    onBackPressed(); //finally, go back to previous screen
+                }
 
                 @Override
                 public void onFailure(Exception e) {
@@ -173,6 +181,8 @@ public class ActEditActivity extends AppCompatActivity {
                 }
             });
         }
+
+
     }
 
     private void updateContent() {
@@ -180,10 +190,18 @@ public class ActEditActivity extends AppCompatActivity {
             eaName.setText(act.getArtistName());
             eaCountry.setText(act.getArtistCountry());
             egenre.setText(act.getGenre());
-            edate.setText(act.getDate());
+            switch (act.getDate()){
+                case "Friday":
+                    edate.setSelection(0);
+                    break;
+                case "Saturday":
+                    edate.setSelection(1);
+                    break;
+                case "Sunday":
+                    edate.setSelection(2);
+            }
             estartTime.setText(act.getStartTime());
             eprice.setText(String.valueOf(act.getPrice()));
-            eaWebsite.setText(act.getArtistWebsite());
             estage.setText(act.getIdStage());
 
         }
@@ -203,9 +221,8 @@ public class ActEditActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error, couldn't delete the act", Toast.LENGTH_LONG).show();
                 }
             });
-        }else{
-            onBackPressed();
         }
+        onBackPressed(); //finally, go back to previous screen
 
     }
 
