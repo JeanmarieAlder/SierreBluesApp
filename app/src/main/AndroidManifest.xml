@@ -28,7 +28,7 @@
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".TimetableActivity"
+            android:name=".ui.userviews.TimetableActivity"
             android:parentActivityName=".WelcomeActivity" />
         <activity
             android:name=".AboutActivity"

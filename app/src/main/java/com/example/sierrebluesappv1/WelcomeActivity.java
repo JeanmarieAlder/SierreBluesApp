@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.sierrebluesappv1.ui.userviews.TimetableActivity;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

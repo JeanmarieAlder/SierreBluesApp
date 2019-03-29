@@ -58,44 +58,6 @@
     <string name="stage_places">Places</string>
     <string name="about_text">This application was made by Jean-Marie Alder and Alexandre Schweizer for the module 644-1 Mobile and Cloud Computing.</string>
 
-
-
-    <string-array name="acts_list">
-        <item>Act1</item>
-        <item>Act2</item>
-        <item>Act3</item>
-        <item>Act4</item>
-        <item>Act5</item>
-        <item>Act6</item>
-        <item>Act7</item>
-        <item>Act8</item>
-        <item>Act9</item>
-        <item>Act10</item>
-        <item>Act11</item>
-        <item>Act12</item>
-        <item>Act13</item>
-        <item>Act14</item>
-        <item>Act15</item>
-        <item>Act16</item>
-    </string-array>
-    <string-array name="scenes_list">
-        <item>Scene1</item>
-        <item>Scene2</item>
-        <item>Scene3</item>
-        <item>Scene4</item>
-        <item>Scene5</item>
-        <item>Scene6</item>
-        <item>Scene7</item>
-        <item>Scene8</item>
-        <item>Scene9</item>
-        <item>Scene10</item>
-        <item>Scene11</item>
-        <item>Scene13</item>
-        <item>Scene12</item>
-        <item>Scene14</item>
-        <item>Scene15</item>
-        <item>Scene16</item>
-    </string-array>
     <string-array name="dates">
         <item>Friday</item>
         <item>Saturday</item>

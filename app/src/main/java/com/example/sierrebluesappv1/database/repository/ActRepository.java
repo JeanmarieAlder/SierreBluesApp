@@ -36,6 +36,18 @@ public class ActRepository {
     public LiveData<List<ActEntity>> getAll(Application application){
         return ((BaseApp)application).getDatabase().actDao().getAll();
     }
+    public LiveData<List<ActEntity>> getActsByDay(final String day,
+                                                  Application application){
+        if(day.equals("Friday")){
+            return ((BaseApp)application).getDatabase().actDao().getFridayActs();
+        }else if(day.equals("Saturday")){
+            return ((BaseApp)application).getDatabase().actDao().getSaturdayActs();
+        }else if(day.equals("Sunday")){
+            return ((BaseApp)application).getDatabase().actDao().getSundayActs();
+        }else{
+            return ((BaseApp)application).getDatabase().actDao().getAll();
+        }
+    }
 
     public void insert(final ActEntity act, OnAsyncEventListener callback,
                        Application application) {
