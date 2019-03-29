@@ -120,10 +120,10 @@
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_genre"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
+    <EditText
         android:id="@+id/act_edit_text_date"
-        android:layout_width="213dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -205,6 +205,18 @@
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_price"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <EditText
+        android:id="@+id/act_edit_text_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/act_edit_website"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price" />
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="0dp"
@@ -218,6 +230,21 @@
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_price"
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_price"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/artist_website"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_website"
+        app:layout_constraintEnd_toStartOf="@+id/act_edit_text_website"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText

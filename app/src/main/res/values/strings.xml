@@ -56,6 +56,7 @@
     <string name="stage_location">Location</string>
     <string name="stage_capacity">Capacity</string>
     <string name="stage_places">Places</string>
+    <string name="about_text">This application was made by Jean-Marie Alder and Alexandre Schweizer for the module 644-1 Mobile and Cloud Computing.</string>
 
 
 
