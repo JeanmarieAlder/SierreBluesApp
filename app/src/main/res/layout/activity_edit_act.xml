@@ -120,10 +120,10 @@
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_genre"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <Spinner
         android:id="@+id/act_edit_text_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="213dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -140,7 +140,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/artist_date"
         android:textAlignment="textEnd"
         android:textColor="#000000"
@@ -149,7 +148,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
     <EditText
         android:id="@+id/act_edit_text_stime"
@@ -255,10 +254,9 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/act_edit_stage"
-        android:nextFocusDown="@+id/edit_act_save_button"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_website" />
 
     <TextView
         android:id="@+id/textView10"
@@ -276,6 +274,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/edit_act_delete_button"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/button_background"
+        android:text="@string/act_delete"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_stage" />
+
+    <Button
         android:id="@+id/edit_act_save_button"
         android:layout_width="180dp"
         android:layout_height="40dp"
@@ -286,19 +297,6 @@
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edit_act_delete_button"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/edit_act_delete_button"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button_background"
-        android:text="@string/act_delete"
-        android:textColor="@color/button_text_color"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_stage" />
 
     <Button
         android:id="@+id/edit_act_cancel_button"
