@@ -120,15 +120,16 @@
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_genre"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <Spinner
         android:id="@+id/act_edit_text_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="213dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/act_edit_datetime"
-        android:inputType="datetime"
+        android:inputType="textPersonName"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/act_edit_text_genre" />
 
@@ -137,15 +138,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/artist_date"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_date"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_date"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
     <EditText
         android:id="@+id/act_edit_text_stime"
@@ -201,31 +204,19 @@
         app:layout_constraintEnd_toStartOf="@+id/act_edit_text_price"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/act_edit_text_website"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/act_edit_website"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price" />
-
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/artist_website"
+        android:text="Price:"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_website"
-        app:layout_constraintEnd_toStartOf="@+id/act_edit_text_website"
+        app:layout_constraintBaseline_toBaselineOf="@+id/act_edit_text_price"
+        app:layout_constraintEnd_toStartOf="@+id/act_edit_text_price"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -238,7 +229,7 @@
         android:hint="@string/act_edit_stage"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_website" />
+        app:layout_constraintTop_toBottomOf="@+id/act_edit_text_price" />
 
     <TextView
         android:id="@+id/textView10"

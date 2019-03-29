@@ -69,14 +69,12 @@ public class StageEditActivity extends AppCompatActivity {
 
         buttonSave.setOnClickListener(view -> {
             saveChanges(esName.getText().toString());
-            onBackPressed();
         });
         buttonCancel.setOnClickListener(view -> {
             cancelSelected();
         });
         buttonDelete.setOnClickListener(view -> {
             deleteSelected();
-            onBackPressed();
         });
 
         //get act ID from intent and set edit mode to false if new stage
@@ -102,7 +100,11 @@ public class StageEditActivity extends AppCompatActivity {
                 stage.setName(esName.getText().toString());
                 stage.setLocation(esLocation.getText().toString());
                 stage.setLocationWebsite(esWebsite.getText().toString());
-                stage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
+                if(!"".equals(esMaxCapacity.getText().toString())){
+                    stage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
+                }else{
+                    stage.setMaxCapacity(0);
+                }
                 stage.setSeatingPlaces(swSeatingPlaces.isChecked());
 
                 viewModel.updateStage(stage, new OnAsyncEventListener() {
@@ -123,7 +125,11 @@ public class StageEditActivity extends AppCompatActivity {
                 newStage.setName(esName.getText().toString());
                 newStage.setLocation(esLocation.getText().toString());
                 newStage.setLocationWebsite(esWebsite.getText().toString());
-                newStage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
+                if(!"".equals(esMaxCapacity.getText().toString())){
+                    newStage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
+                }else{
+                    newStage.setMaxCapacity(0);
+                }
                 newStage.setSeatingPlaces(swSeatingPlaces.isChecked());
 
 
@@ -139,6 +145,7 @@ public class StageEditActivity extends AppCompatActivity {
                     }
                 });
             }
+            onBackPressed();
         } else {
             //Scene name has not been entered
             Toast.makeText(getApplicationContext(), "Invalid stage name", Toast.LENGTH_LONG).show();
@@ -163,9 +170,8 @@ public class StageEditActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error, couldn't delete the stage", Toast.LENGTH_LONG).show();
                 }
             });
-        }else{
-            onBackPressed();
         }
+        onBackPressed();
     }
 
     public boolean onCreateOptionsMenu(Menu menu)

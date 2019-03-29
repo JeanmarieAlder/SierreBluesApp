@@ -14,7 +14,6 @@ public class DatabaseInitializer {
         Log.i(TAG, "Inserting demo data.");
         PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();
-
     }
 
     private static void populateWithTestData(AppDatabase db) {
@@ -39,56 +38,60 @@ public class DatabaseInitializer {
 
 
         addAct(db,
-                "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
+                "Kiss", "USA", "imagePath", "Hard Rock",
+                "22:00", "Friday", 100.0f, "THL"
+        );
+        addAct(db,
+                "Prophets of Rage", "USA", "imagePath", "Hard Rock",
+                "22:15", "Sunday", 110.0f, "Main scene"
         );
         addAct(db,
                 "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
+                "23:30", "Saturday", 120.0f,  "THL"
         );
         addAct(db,
-                "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", "Main scene"
+                "Build To Spill", "USA", "imagePath", "Rock",
+                "20:00", "Saturday", 50.0f,  "Main scene"
         );
 
         addAct(db,
-                "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
+                "Kiss", "USA", "imagePath", "Hard Rock",
+                "22:00", "Friday", 100.0f, "THL"
         );
         addAct(db,
-                "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
+                "ZZ Top", "USA", "imagePath", "Blues",
+                "23:30", "Saturday", 120.0f,  "THL"
         );
         addAct(db,
-                "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", "THL"
+                "Build To Spill", "USA", "imagePath", "Rock",
+                "20:00", "Saturday", 50.0f,  "THL"
         );
 
         addAct(db,
-                "Kiss", "USA", "Crazy band. lorem ipsum.", "Hard Rock",
-                "22:00", "friday", 100.0f, "www.hevs.ch", "THL"
+                "Kiss", "USA", "imagePath", "Hard Rock",
+                "22:00", "Friday", 100.0f,  "THL"
         );
         addAct(db,
-                "ZZ Top", "USA", "Crazy rock blues band. lorem ipsum.", "Blues",
-                "23:30", "saturday", 120.0f, "www.hevs.ch", "THL"
+                "ZZ Top", "USA", "imagePath", "Blues",
+                "23:30", "Saturday", 120.0f,  "THL"
         );
         addAct(db,
-                "Build To Spill", "USA", "Crazy band who loves to improvise. lorem ipsum.", "Rock",
-                "20:00", "saturday", 50.0f, "www.hevs.ch", "THL"
+                "Build To Spill", "USA", "imagePath", "Rock",
+                "20:00", "Saturday", 50.0f,  "THL"
         );
     }
 
     private static void addStage(AppDatabase db, String name, String location,
-                                 String website, int capacity, boolean seats) {
+             String website, int capacity, boolean seats) {
         StageEntity stage = new StageEntity(name,location,website,capacity,seats);
         db.stageDao().insert(stage);
     }
 
     private static void addAct(AppDatabase db, String name, String country,
-                               String descr, String genre, String startTime, String date,
-                               float price, String website, String stageName) {
-        ActEntity act = new ActEntity(name,country,descr,genre,startTime,date,
-                price,website,stageName);
+                               String image, String genre, String startTime, String date,
+                               float price, String stageName) {
+        ActEntity act = new ActEntity(name,country,image,genre,startTime,date,
+                price,stageName);
         db.actDao().insert(act);
 
     }

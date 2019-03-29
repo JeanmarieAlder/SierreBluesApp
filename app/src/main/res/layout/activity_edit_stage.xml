@@ -7,7 +7,7 @@
     tools:context=".ui.stage.StageEditActivity">
 
     <ImageView
-        android:id="@+id/acts_background3"
+        android:id="@+id/edit_stage_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.3"
@@ -31,7 +31,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/acts_background3"
+        app:layout_constraintTop_toTopOf="@+id/edit_stage_background"
         tools:ignore="UnknownId" />
 
     <EditText
@@ -157,19 +157,6 @@
         app:layout_constraintTop_toBottomOf="@+id/scene_edit_text_max_capacity" />
 
     <Button
-        android:id="@+id/edit_stage_cancel_button"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_background"
-        android:text="Cancel"
-        android:textColor="@color/button_text_color"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_stage_delete_button" />
-
-    <Button
         android:id="@+id/edit_stage_save_button"
         android:layout_width="180dp"
         android:layout_height="40dp"
@@ -181,6 +168,19 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_stage_switch_seating_places" />
+
+    <Button
+        android:id="@+id/edit_stage_cancel_button"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_background"
+        android:text="Cancel"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_stage_delete_button" />
 
     <Button
         android:id="@+id/edit_stage_delete_button"

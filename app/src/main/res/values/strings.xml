@@ -96,6 +96,11 @@
         <item>Scene15</item>
         <item>Scene16</item>
     </string-array>
+    <string-array name="dates">
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
     <string name="icon_add">Add</string>
     <string name="title_activity_settings">Settings</string>
 

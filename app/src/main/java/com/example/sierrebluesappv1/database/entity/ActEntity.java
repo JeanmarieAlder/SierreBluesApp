@@ -6,8 +6,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.UUID;
-
 @Entity(tableName = "Act",
         foreignKeys =
         @ForeignKey(
@@ -31,8 +29,8 @@ public class ActEntity {
     @ColumnInfo(name = "ArtistCountry")
     private String artistCountry;
 
-    @ColumnInfo(name = "Description")
-    private String description;
+    @ColumnInfo(name = "ArtistImage")
+    private String artistImage;
 
     @ColumnInfo(name = "Genre")
     private String genre;
@@ -46,23 +44,20 @@ public class ActEntity {
     @ColumnInfo(name = "Price")
     private float price;
 
-    @ColumnInfo(name = "ArtistWebsite")
-    private String artistWebsite;
 
     @ColumnInfo(name = "IdStage")
     private String idStage;
 
     public ActEntity(String artistName, String artistCountry,
-                     String description, String genre, String startTime,
-                     String date, float price, String artistWebsite, String idStage) {
+                     String artistImage, String genre, String startTime,
+                     String date, float price, String idStage) {
         this.artistName = artistName;
         this.artistCountry = artistCountry;
-        this.description = description;
+        this.artistImage = artistImage;
         this.genre = genre;
         this.startTime = startTime;
         this.date = date;
         this.price = price;
-        this.artistWebsite = artistWebsite;
         this.idStage = idStage;
     }
 
@@ -94,12 +89,12 @@ public class ActEntity {
         this.artistCountry = artistCountry;
     }
 
-    public String getDescription() {
-        return description;
+    public String getArtistImage() {
+        return artistImage;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setArtistImage(String artistImage) {
+        this.artistImage = artistImage;
     }
 
     public String getGenre() {
@@ -132,14 +127,6 @@ public class ActEntity {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public String getArtistWebsite() {
-        return artistWebsite;
-    }
-
-    public void setArtistWebsite(String artistWebsite) {
-        this.artistWebsite = artistWebsite;
     }
 
     public String getIdStage() {

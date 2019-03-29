@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "938dace83aa69dc9d1a024b3204d751f",
+    "identityHash": "5980efb0d56c9a90a056168563c4ef17",
     "entities": [
       {
         "tableName": "Act",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`IdAct` INTEGER PRIMARY KEY AUTOINCREMENT, `ArtistName` TEXT, `ArtistCountry` TEXT, `Description` TEXT, `Genre` TEXT, `Date` TEXT, `StartTime` TEXT, `Price` REAL NOT NULL, `ArtistWebsite` TEXT, `IdStage` TEXT, FOREIGN KEY(`IdStage`) REFERENCES `Stage`(`StageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`IdAct` INTEGER PRIMARY KEY AUTOINCREMENT, `ArtistName` TEXT, `ArtistCountry` TEXT, `ArtistImage` TEXT, `Genre` TEXT, `Date` TEXT, `StartTime` TEXT, `Price` REAL NOT NULL, `IdStage` TEXT, FOREIGN KEY(`IdStage`) REFERENCES `Stage`(`StageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "idAct",
@@ -27,8 +27,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "description",
-            "columnName": "Description",
+            "fieldPath": "artistImage",
+            "columnName": "ArtistImage",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -55,12 +55,6 @@
             "columnName": "Price",
             "affinity": "REAL",
             "notNull": true
-          },
-          {
-            "fieldPath": "artistWebsite",
-            "columnName": "ArtistWebsite",
-            "affinity": "TEXT",
-            "notNull": false
           },
           {
             "fieldPath": "idStage",
@@ -146,7 +140,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"938dace83aa69dc9d1a024b3204d751f\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5980efb0d56c9a90a056168563c4ef17\")"
     ]
   }
 }
