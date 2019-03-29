@@ -10,12 +10,12 @@
         android:id="@+id/welcome_button_timetable"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginTop="250dp"
         android:background="@drawable/button_background"
         android:onClick="timetableSelected"
         android:text="@string/title_timetable"
         android:textColor="@color/button_text_color"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
