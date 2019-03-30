@@ -16,13 +16,10 @@ import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.widget.Switch;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -37,11 +34,11 @@ import java.util.Locale;
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
-
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
+
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -101,19 +98,24 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupActionBar();
+
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content,new SettingsFragment())
+                .commit();
+
+        //setupActionBar();
     }
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
+//    private void setupActionBar() {
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            // Show the Up button in the action bar.
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+//    }
 
     /**
      * {@inheritDoc}
@@ -147,38 +149,32 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
-
-        Switch nightSwitch;
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
+
+        }
+    }
+
+
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("pref_key_language"));
+            //bindPreferenceSummaryToValue(findPreference("pref_key_language"));
             //bindPreferenceSummaryToValue(findPreference("pref_key_theme"));
-            bindPreferenceSummaryToValue(findPreference("pref_key_switch"));
-
-            if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-
-            }
         }
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-
-
-    }
-}
+//        @Override
+//        public boolean onOptionsItemSelected(MenuItem item) {
+//            int id = item.getItemId();
+//            if (id == android.R.id.home) {
+//                startActivity(new Intent(getActivity(), SettingsActivity.class));
+//                return true;
+//            }
+//            return super.onOptionsItemSelected(item);
+//        }
+//    }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="app_name">Sierre Blues Festival</string>
+    <string name="about">À Propos</string>
+    <string name="settings">Paramètres</string>
+    <string name="user">Utilisateur</string>
+    <string name="admin">Admin</string>
+    <string name="demo_data">Données Démo</string>
+    <string name="acts">Actes</string>
+    <string name="scenes">Scènes</string>
+    <string name="icon_description">Application Icon</string>
+    <string name="image_background">Background Image</string>
+    <string name="title_main">Connexion</string>
+    <string name="title_about">À Propos</string>
+    <string name="title_acts">Actes</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="title_scenes">Scènes</string>
+    <string name="title_settings">Paramètres</string>
+    <string name="title_welcome">Accueil</string>
+    <string name="title_timetable">Horaires</string>
+    <string name="title_edit_act">Editer Acte</string>
+    <string name="title_edit_stage">Editer Scène</string>
+    <string name="timetable_friday_label">Vendredi 13 Juin</string>
+    <string name="timetable_saturday_label">Samedi 14 Juin</string>
+    <string name="timetable_sunday_label">Dimanche 15 Juin</string>
+    <string name="dash"> - </string>
+    <string name="alert_demo_data">Recharger la démo</string>
+    <string name="alert_demo_data_text">Êtes-vous sûr de vouloir effacer toutes les données et les remplacer par celles de base ?</string>
+    <string name="action_reset">Réinitialiser les données</string>
+    <string name="demo_data_initiated">Les données démos ont été réinitialisées</string>
+    <string name="action_cancel">Annuler</string>
+    <string name="message_delete_edit">Laisser appuyer pour éditer ou effacer</string>
+    <string name="alert_edit_delete">Editer / Supprimer ?</string>
+    <string name="act_edit_text_name">Artiste</string>
+    <string name="artist_name">Nom:</string>
+    <string name="artist_country">Origine:</string>
+    <string name="act_edit_artist_country">Pays</string>
+    <string name="artist_genre">Genre:</string>
+    <string name="act_edit_text_genre">Genre</string>
+    <string name="artist_date">Date:</string>
+    <string name="act_edit_datetime">Date</string>
+    <string name="artist_start_time">Heure de début:</string>
+    <string name="act_edit_start_time">Heure de début</string>
+    <string name="artist_price">Prix:</string>
+    <string name="act_edit_price">Prix</string>
+    <string name="artist_website">Site:</string>
+    <string name="act_edit_website">URL</string>
+    <string name="artist_stage">Scène:</string>
+    <string name="act_edit_stage">Scène</string>
+    <string name="act_delete">Supprime</string>
+    <string name="act_save">Sauvegarder</string>
+    <string name="act_cancel">Annuler</string>
+    <string name="recycler_title">Titre</string>
+    <string name="recycler_date_address">Date ou addresse</string>
+    <string name="recycler_scene_duration">Nom de la scène ou duére</string>
+    <string name="stage_name">Nom</string>
+    <string name="stage_location">Location</string>
+    <string name="stage_capacity">Capacité</string>
+    <string name="stage_places">Places</string>
+    <string name="about_text">Cette application a été réalisée par Jean-Marie Alder et Alexandre Schweizer dans le cadre du module 644-1 Mobile and Cloud Computing.</string>
+
+    <string-array name="dates">
+        <item>Vendredi</item>
+        <item>Samedi</item>
+        <item>Dimanche</item>
+    </string-array>
+    <string name="icon_add">Ajouter</string>
+    <string name="title_activity_settings">Paramètres</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- General settings -->
+    <string name="pref_header_general">Géneral</string>
+
+    <string name="pref_title_language">Langues</string>
+    <string name="pref_description_language">Choisir la langue
+    </string>
+    <string-array name="pref_list_language">
+        <item>English</item>
+        <item>Français</item>
+    </string-array>
+    <string-array name="pref_values_language">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_title_lightweight_mode">Mode léger</string>
+    <string name="pref_description_lightweight_mode">Activer pour supprimer les images et vidéos</string>
+
+    <!--<string name="pref_title_theme">Theme</string>-->
+    <!--<string name="pref_description_theme">Choose which theme is applied to this app</string>-->
+    <!--<string-array name="pref_list_theme">-->
+        <!--<item>Light</item>-->
+        <!--<item>Dark</item>-->
+    <!--</string-array>-->
+    <!--<string-array name="pref_values_theme">-->
+        <!--<item>1</item>-->
+        <!--<item>2</item>-->
+    <!--</string-array>-->
+
+    <string name="pref_title_switch_theme">Thème</string>
+    <string name="pref_description_switch">Glisser pour active le mode sombre</string>
+</resources>
