@@ -1,6 +1,5 @@
-package com.example.sierrebluesappv1;
+package com.example.sierrebluesappv1.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sierrebluesappv1.R;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
+import com.example.sierrebluesappv1.ui.nav.WelcomeActivity;
 import com.example.sierrebluesappv1.database.AppDatabase;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.DashboardActivity;
 
 import static com.example.sierrebluesappv1.database.AppDatabase.initializeDemoData;
 
@@ -72,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Used when demo data button is pressed, reinitializes all data
+     * using default data located in DatabaseInitializer class.
+     * @param view
+     */
     public void reinitializeDatabase(View view) {
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(getString(R.string.alert_demo_data));

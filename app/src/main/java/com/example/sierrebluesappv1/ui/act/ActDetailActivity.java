@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.ui.stage.StageDetailActivity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
@@ -44,8 +44,10 @@ public class ActDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_detail);
 
+        //initializes views references, buttons and get id from the act
         initialize();
-
+        //Create viewmodel for the specific act
+        //Observer will check if data has changed and notify updateContent()
         ActViewModel.Factory factory = new ActViewModel.Factory(
                 getApplication(), actId);
         viewModel = ViewModelProviders.of(this, factory).get(ActViewModel.class);
@@ -57,6 +59,10 @@ public class ActDetailActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Updates the data that the user sees. Called on ViewModel creation
+     * or whenever data changes.
+     */
     private void updateContent() {
         if (act != null) {
             tvName.setText(act.getArtistName());
@@ -64,6 +70,9 @@ public class ActDetailActivity extends AppCompatActivity {
             tvGenre.setText(act.getGenre());
             tvDateStartTime.setText(act.getDate() + " - " + act.getStartTime());
             tvPrice.setText(String.valueOf(act.getPrice()));
+            //retrieved from:
+            //https://stackoverflow.com/questions/2394935/can-i-underline-text-in-an-android-layout
+            //Underlines the stage name to show that it is clickable.
             SpannableString content = new SpannableString(act.getIdStage());
             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
             tvStage.setText(content);
@@ -71,6 +80,9 @@ public class ActDetailActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initializes views, buttons and IDs
+     */
     private void initialize() {
 
         tvName = findViewById(R.id.act_detail_text_name);
@@ -84,8 +96,8 @@ public class ActDetailActivity extends AppCompatActivity {
         buttonDelete = findViewById(R.id.detail_act_delete_button);
         buttonCancel = findViewById(R.id.detail_act_cancel_button);
 
+        //If user (not admin), get rid of edit and delete button.
         isUser = getIntent().getBooleanExtra("isUser", false);
-
         if(isUser){
             buttonDelete.setVisibility(View.GONE);
             buttonEdit.setVisibility(View.GONE);
@@ -94,9 +106,9 @@ public class ActDetailActivity extends AppCompatActivity {
 
             buttonDelete.setOnClickListener(view -> deleteSelected());
         }
-
-        buttonCancel.setOnClickListener(view -> onBackPressed());
+        buttonCancel.setOnClickListener(view -> onBackPressed()); //cancel button goes to previous activity
         tvStage.setOnClickListener(view -> {
+            //if stagename is clicked, open the stage detail activity with selected stage
             Intent intent = new Intent(ActDetailActivity.this, StageDetailActivity.class);
             intent.putExtra("stageId", tvStage.getText().toString());
             intent.putExtra("isUser", isUser);
@@ -107,6 +119,10 @@ public class ActDetailActivity extends AppCompatActivity {
         actId = getIntent().getLongExtra("actId", 0l);
     }
 
+    /**
+     * Called when delete button is pressed,
+     * tries to delete the current act from DB
+     */
     private void deleteSelected() {
         viewModel.deleteAct(act, new OnAsyncEventListener() {
             @Override
@@ -119,9 +135,13 @@ public class ActDetailActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error, couldn't delete the act", Toast.LENGTH_LONG).show();
             }
         });
-        onBackPressed();
+        onBackPressed(); //Back tot previous screen after deletion
     }
 
+    /**
+     * Edit the current act. Opens the actEditActivity with the current act.
+     * @param idAct current act ID
+     */
     private void edit(Long idAct) {
         Intent intent = new Intent(ActDetailActivity.this, ActEditActivity.class);
         intent.putExtra("actId", idAct);

@@ -7,6 +7,9 @@ import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
+/**
+ * Async task to instert act in DB
+ */
 public class CreateAct extends AsyncTask<ActEntity, Void, Void> {
 
     private Application application;

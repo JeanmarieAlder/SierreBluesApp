@@ -6,6 +6,10 @@ import android.arch.persistence.room.Relation;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.database.entity.StageEntity;
 
+/**
+ * Currently not used, might be avaliable next version in order to add
+ * stage data from an act.
+ */
 public class ActWithScene {
 
     @Embedded

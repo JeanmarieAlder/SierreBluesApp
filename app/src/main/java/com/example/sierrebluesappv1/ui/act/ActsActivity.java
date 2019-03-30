@@ -2,37 +2,27 @@ package com.example.sierrebluesappv1.ui.act;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.adapter.RecyclerAdapter;
-import com.example.sierrebluesappv1.database.AppDatabase;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
-import com.example.sierrebluesappv1.ui.BaseActivity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.util.RecyclerViewItemClickListener;
-import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
 import com.example.sierrebluesappv1.viewmodel.act.ActsListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.sierrebluesappv1.database.AppDatabase.initializeDemoData;
 
 public class ActsActivity extends AppCompatActivity {
 
@@ -55,13 +45,15 @@ public class ActsActivity extends AppCompatActivity {
             addSelected();
         });
 
+        //initializes recyclerview
         rView = (RecyclerView)findViewById(R.id.recycler_view_acts);
         rView.setLayoutManager(new LinearLayoutManager(this));
-        rView.setHasFixedSize(true);
+        rView.setHasFixedSize(true); //size never changes
 
 
         acts = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
+            //Add click listener, opens details of the selected act
             @Override
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent(ActsActivity.this, ActDetailActivity.class);

@@ -12,13 +12,17 @@ import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
 import java.util.List;
 
+/**
+ * Stage repository class that retrievs all stages from database
+ * and exposes it to ViewModels.
+ */
 public class StageRepository {
 
     private static StageRepository instance;
 
     public StageRepository() {
     }
-
+    //Repository must be unique, singleton pattern
     public static StageRepository getInstance() {
         if (instance == null) {
             synchronized (ActRepository.class) {
@@ -34,6 +38,7 @@ public class StageRepository {
         return ((BaseApp) application).getDatabase().stageDao().getByName(idStage);
     }
 
+    //get all stages
     public LiveData<List<StageEntity>> getAll(Application application){
         return ((BaseApp) application).getDatabase().stageDao().getAll();
     }

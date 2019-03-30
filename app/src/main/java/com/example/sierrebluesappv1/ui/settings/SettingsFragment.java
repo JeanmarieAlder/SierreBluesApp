@@ -1,7 +1,9 @@
-package com.example.sierrebluesappv1;
+package com.example.sierrebluesappv1.ui.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import com.example.sierrebluesappv1.R;
 
 public class SettingsFragment extends PreferenceFragment {
 

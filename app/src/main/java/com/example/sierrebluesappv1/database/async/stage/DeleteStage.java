@@ -7,6 +7,9 @@ import com.example.sierrebluesappv1.database.entity.StageEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
+/**
+ * Async task to delete stage in DB
+ */
 public class DeleteStage extends AsyncTask<StageEntity, Void, Void> {
     private Application application;
     private OnAsyncEventListener callback;

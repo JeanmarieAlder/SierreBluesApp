@@ -1,20 +1,20 @@
-package com.example.sierrebluesappv1;
+package com.example.sierrebluesappv1.ui.nav;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.example.sierrebluesappv1.ui.userviews.TimetableActivity;
+import com.example.sierrebluesappv1.R;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_about);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -32,13 +32,13 @@ public class WelcomeActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_about:
-                intent = new Intent(WelcomeActivity.this, AboutActivity.class);
-                WelcomeActivity.this.startActivity(intent);
+                intent = new Intent(AboutActivity.this, AboutActivity.class);
+                AboutActivity.this.startActivity(intent);
                 break;
 
             case R.id.action_settings:
-                intent = new Intent(WelcomeActivity.this, SettingsActivity.class);
-                WelcomeActivity.this.startActivity(intent);
+                intent = new Intent(AboutActivity.this, SettingsActivity.class);
+                AboutActivity.this.startActivity(intent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -46,9 +46,4 @@ public class WelcomeActivity extends AppCompatActivity {
         return true;
     }
 
-    public void timetableSelected(View view)
-    {
-        Intent intent = new Intent(this, TimetableActivity.class);
-        startActivity(intent);
-    }
 }

@@ -20,18 +20,27 @@ import com.example.sierrebluesappv1.util.RecyclerViewItemClickListener;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Adapter class for recyclerviews. Uses act_item.xml to arrange items
+ * in viewholders.
+ * @param <T>
+ */
 public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private List<T> mData;
     private RecyclerViewItemClickListener mListener;
-    private static int pos;
+    private static int pos; //get the position of the click (used for long clics)
 
+    /**
+     * Get the position of click
+     * @return click position
+     */
     public static int getPos() {
         return pos;
     }
 
     public RecyclerAdapter(RecyclerViewItemClickListener listener) {
-
+        //listens for changes
         mListener = listener;
     }
 
@@ -42,12 +51,8 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         CardView v = (CardView) LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.act_item, viewGroup, false);
         final ViewHolder viewHolder = new ViewHolder(v);
+        //set the simple click listener
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
-        //v.setOnLongClickListener(view -> {
-        //    mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
-        //    return true;
-        //});
-
         return viewHolder;
     }
 
@@ -56,6 +61,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         T item = mData.get(position);
         //binds text from db to recycler holder according to class
         if (item.getClass().equals(ActEntity.class)) {
+            //View for acts
             holder.textViewName.setText(((ActEntity) item).getArtistName()
                     + " - " + ((ActEntity) item).getArtistCountry());
             holder.textViewDateAddress.setText(((ActEntity) item).getDate()
@@ -66,6 +72,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
 
         if (item.getClass().equals(StageEntity.class)) {
+            //View for stages
             holder.textViewName.setText(((StageEntity) item).getName());
             holder.textViewDateAddress.setText(((StageEntity) item).getLocation());
             String places;
@@ -93,6 +100,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
             mData = data;
             notifyItemRangeInserted(0, data.size());
         } else {
+            //Check if there are differences with database.
             DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
                 @Override
                 public int getOldListSize() {
@@ -117,6 +125,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                    //checks if Act entity is the same
                     if (mData instanceof ActEntity) {
                         ActEntity newAct = (ActEntity) data.get(newItemPosition);
                         ActEntity oldAct = (ActEntity) mData.get(newItemPosition);
@@ -128,6 +137,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                                 && Objects.equals(newAct.getIdStage(), oldAct.getIdStage())
                                 ;
                     }
+                    //checks if Stage entity is the same
                     if (mData instanceof StageEntity) {
                         StageEntity newStage = (StageEntity) data.get(newItemPosition);
                         StageEntity oldStage = (StageEntity) mData.get(newItemPosition);
@@ -146,7 +156,10 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         }
     }
 
-
+    /**
+     * View Holder class that places elements in card view.
+     * Also sets the view ready fo context menu
+     */
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         private TextView textViewName;
         private TextView textViewDateAddress;
@@ -167,7 +180,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-
+            //User can edit or delete an entity
             MenuItem edit = menu.add(Menu.NONE, 1, 1, "Edit");
             MenuItem delete = menu.add(Menu.NONE, 2,2, "Delete");
             pos = getAdapterPosition();

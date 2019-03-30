@@ -1,4 +1,4 @@
-package com.example.sierrebluesappv1;
+package com.example.sierrebluesappv1.ui.nav;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,15 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.sierrebluesappv1.ui.act.ActsActivity;
-import com.example.sierrebluesappv1.ui.stage.StagesActivity;
+import com.example.sierrebluesappv1.R;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
+import com.example.sierrebluesappv1.ui.userviews.TimetableActivity;
 
-public class DashboardActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_welcome);
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -33,13 +34,13 @@ public class DashboardActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_about:
-                intent = new Intent(DashboardActivity.this, AboutActivity.class);
-                DashboardActivity.this.startActivity(intent);
+                intent = new Intent(WelcomeActivity.this, AboutActivity.class);
+                WelcomeActivity.this.startActivity(intent);
                 break;
 
             case R.id.action_settings:
-                intent = new Intent(DashboardActivity.this, SettingsActivity.class);
-                DashboardActivity.this.startActivity(intent);
+                intent = new Intent(WelcomeActivity.this, SettingsActivity.class);
+                WelcomeActivity.this.startActivity(intent);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -47,15 +48,9 @@ public class DashboardActivity extends AppCompatActivity {
         return true;
     }
 
-    public void actsSelected(View view)
+    public void timetableSelected(View view)
     {
-        Intent intent = new Intent(this, ActsActivity.class);
-        startActivity(intent);
-    }
-
-    public void scenesSelected(View view)
-    {
-        Intent intent = new Intent(this, StagesActivity.class);
+        Intent intent = new Intent(this, TimetableActivity.class);
         startActivity(intent);
     }
 }

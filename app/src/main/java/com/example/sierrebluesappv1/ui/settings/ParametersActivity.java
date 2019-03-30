@@ -1,4 +1,4 @@
-package com.example.sierrebluesappv1;
+package com.example.sierrebluesappv1.ui.settings;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,7 +7,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.sierrebluesappv1.R;
 
 import java.util.Locale;
 

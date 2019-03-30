@@ -7,6 +7,10 @@ import com.example.sierrebluesappv1.database.AppDatabase;
 import com.example.sierrebluesappv1.database.repository.ActRepository;
 import com.example.sierrebluesappv1.database.repository.StageRepository;
 
+/**
+ * Base application, used to retreive an instance of the database,
+ * Act and Stage table.
+ */
 public class BaseApp extends Application {
 
     @Override

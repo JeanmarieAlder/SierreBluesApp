@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sierre Blues Festival</string>
     <string name="about">Über</string>
@@ -26,7 +25,8 @@
     <string name="timetable_sunday_label">Sonntag, 15. Juni</string>
     <string name="dash"> - </string>
     <string name="alert_demo_data">Demo-Daten erneut laden</string>
-    <string name="alert_demo_data_text">Sind Sie sicher, dass Sie alle Daten löschen und durch Demo-Daten ersetzen wollen?</string>
+    <string name="alert_demo_data_text">Sind Sie sicher, dass Sie alle Daten löschen
+        und durch Demo-Daten ersetzen wollen?</string>
     <string name="action_reset">Daten zurücksetzen</string>
     <string name="demo_data_initiated">Die Demo-Daten wurden initialisiert.</string>
     <string name="action_cancel">Abbrechen</string>
@@ -58,7 +58,8 @@
     <string name="stage_location">Standort</string>
     <string name="stage_capacity">Kapazität</string>
     <string name="stage_places">Plätze</string>
-    <string name="about_text">Dieser Antrag wurde von Jean-Marie Alder und Alexandre Schweizer für das Modul 644-1 Mobile and Cloud Computing gestellt.</string>
+    <string name="about_text">Dieser Antrag wurde von Jean-Marie Alder und Alexandre Schweizer
+        für das Modul 644-1 Mobile and Cloud Computing gestellt.</string>
 
     <string-array name="dates">
         <item>Freitag</item>

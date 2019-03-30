@@ -24,28 +24,28 @@
             android:name=".ui.act.ActEditActivity"
             android:parentActivityName=".ui.act.ActsActivity"/>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.userviews.TimetableActivity"
-            android:parentActivityName=".WelcomeActivity" />
+            android:parentActivityName=".ui.nav.WelcomeActivity" />
         <activity
-            android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".ui.nav.AboutActivity"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.stage.StagesActivity"
-            android:parentActivityName=".DashboardActivity" />
+            android:parentActivityName=".ui.nav.DashboardActivity" />
         <activity
             android:name=".ui.act.ActsActivity"
-            android:parentActivityName=".DashboardActivity" />
+            android:parentActivityName=".ui.nav.DashboardActivity" />
         <activity
-            android:name=".DashboardActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".ui.nav.DashboardActivity"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
-            android:name=".WelcomeActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:name=".ui.nav.WelcomeActivity"
+            android:parentActivityName=".ui.MainActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

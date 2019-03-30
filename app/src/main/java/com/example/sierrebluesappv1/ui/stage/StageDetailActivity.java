@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.database.entity.StageEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.stage.StageViewModel;
@@ -40,12 +40,14 @@ public class StageDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_detail);
 
+        //Initializes views and buttons, also retrieves stage ID
         initialize();
-
+        //ViewModel creation
         StageViewModel.Factory factory = new StageViewModel.Factory(
                 getApplication(), stageId);
         viewModel = ViewModelProviders.of(this, factory).get(StageViewModel.class);
         viewModel.getStage().observe(this, stageEntity -> {
+            //Observes if data has changed
             if (stageEntity != null) {
                 stage = stageEntity;
                 updateContent();
@@ -53,12 +55,16 @@ public class StageDetailActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method used to update UI data if DB has changed.
+     */
     private void updateContent() {
         if (stage != null) {
             tvName.setText(stage.getName());
             tvLocation.setText(stage.getLocation());
             tvWebsite.setText(stage.getLocationWebsite());
             tvMaxCapacity.setText(String.valueOf(stage.getMaxCapacity()));
+            //Seating place is boolean, true is equal to yes.
             if(stage.isSeatingPlaces()){
                 tvSeatingPlaces.setText("Yes");
             }else{
@@ -68,14 +74,17 @@ public class StageDetailActivity extends AppCompatActivity {
 
         }
     }
-
+    /**
+     * Initializes views, buttons and IDs
+     */
     private void initialize() {
         buttonEdit = findViewById(R.id.detail_stage_edit_button);
         buttonDelete = findViewById(R.id.detail_stage_delete_button);
         buttonCancel = findViewById(R.id.detail_stage_cancel_button);
 
+        //Checks if user (not admin) has launched the activity.
+        //If user, get rid of delete and edit buttons.
         isUser = getIntent().getBooleanExtra("isUser", false);
-
         if(isUser){
             buttonDelete.setVisibility(View.GONE);
             buttonEdit.setVisibility(View.GONE);
@@ -84,7 +93,6 @@ public class StageDetailActivity extends AppCompatActivity {
 
             buttonDelete.setOnClickListener(view -> deleteSelected());
         }
-
         buttonCancel.setOnClickListener(view -> onBackPressed());
 
         tvName = findViewById(R.id.stage_detail_text_name);
@@ -93,10 +101,14 @@ public class StageDetailActivity extends AppCompatActivity {
         tvMaxCapacity = findViewById(R.id.stage_detail_text_capacity);
         tvSeatingPlaces = findViewById(R.id.stage_detail_text_seating);
 
-        //get act ID from intent and set edit mode to false if new stage
+        //get act ID from intent
         stageId = getIntent().getStringExtra("stageId");
     }
 
+    /**
+     * Method when delete button is used.
+     * Will try to delete the current act and go back to previous screen.
+     */
     private void deleteSelected() {
         viewModel.deleteStage(stage, new OnAsyncEventListener() {
             @Override
@@ -112,6 +124,10 @@ public class StageDetailActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    /**
+     * Called when edit button is used. starts a stageEditActivity with the current stage.
+     * @param name current stage ID
+     */
     private void edit(String name) {
         Intent intent = new Intent(StageDetailActivity.this, StageEditActivity.class);
         intent.putExtra("stageId", name);
@@ -128,7 +144,7 @@ public class StageDetailActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        Intent intent = getIntent();
+        Intent intent;
 
         switch (item.getItemId())
         {

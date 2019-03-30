@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
@@ -44,10 +44,10 @@ public class ActEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_act);
 
+        //Initializes buttons, views, current ID and edit mode
         initialize();
 
-
-
+        //Creates ViewModel
         ActViewModel.Factory factory = new ActViewModel.Factory(
                 getApplication(), actId);
         viewModel = ViewModelProviders.of(this, factory).get(ActViewModel.class);
@@ -59,8 +59,9 @@ public class ActEditActivity extends AppCompatActivity {
         });
     }
 
-
-
+    /**
+     * Initializes views, buttons, id and editmode
+     */
     private void initialize() {
         eaName = findViewById(R.id.act_edit_text_name);
         eaCountry = findViewById(R.id.act_edit_text_country);
@@ -78,17 +79,9 @@ public class ActEditActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.edit_act_save_button);
         buttonCancel = findViewById(R.id.edit_act_cancel_button);
         buttonDelete = findViewById(R.id.edit_act_delete_button);
-
-        buttonSave.setOnClickListener(view -> {
-            saveChanges();
-        });
-        buttonCancel.setOnClickListener(view -> {
-            cancelSelected();
-        });
-        buttonDelete.setOnClickListener(view -> {
-            deleteSelected();
-
-        });
+        buttonSave.setOnClickListener(view -> saveChanges());
+        buttonCancel.setOnClickListener(view -> cancelSelected());
+        buttonDelete.setOnClickListener(view -> deleteSelected());
 
         //get act ID from intent and set edit mode to false if new act
         actId = getIntent().getLongExtra("actId", 0l);
@@ -207,7 +200,9 @@ public class ActEditActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Method when delete is pressed, will try to delete current act.
+     */
     private void deleteSelected(){
         if(editMode){
             viewModel.deleteAct(act, new OnAsyncEventListener() {
@@ -226,6 +221,9 @@ public class ActEditActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method when cancel is pressed, goes back to previous screen
+     */
     private void cancelSelected(){
         onBackPressed();
     }

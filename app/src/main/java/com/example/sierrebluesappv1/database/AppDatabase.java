@@ -17,10 +17,13 @@ import com.example.sierrebluesappv1.database.entity.StageEntity;
 
 import java.util.concurrent.Executors;
 
+/**
+ * App database, has an act table and a stage table.
+ * please don't forget to increment version number if you make changes
+ * in running state.
+ */
 @Database(entities = {ActEntity.class, StageEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
-
-    private static final String TAG = "AppDatabase";
 
     private static AppDatabase instance;
 
@@ -30,7 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract StageDao stageDao();
 
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
-
+    //Database instance must be unique, singleton pattern
     public static AppDatabase getInstance(final Context context) {
         if (instance == null) {
             synchronized (AppDatabase.class) {
@@ -51,7 +54,6 @@ public abstract class AppDatabase extends RoomDatabase {
      * The SQLite database is only created when it's accessed for the first time.
      */
     private static AppDatabase buildDatabase(final Context appContext) {
-        Log.i(TAG, "Database will be initialized.");
         return Room.databaseBuilder(appContext, AppDatabase.class, DATABASE_NAME)
                 .addCallback(new Callback() {
                     @Override
@@ -64,13 +66,13 @@ public abstract class AppDatabase extends RoomDatabase {
                             database.setDatabaseCreated();
                         });
                     }
+                    //fallback to destructive in order to avoid version errors
                 }).fallbackToDestructiveMigration().build();
     }
 
     public static void initializeDemoData(final AppDatabase database) {
         Executors.newSingleThreadExecutor().execute(() -> {
             database.runInTransaction(() -> {
-                Log.i(TAG, "Wipe database.");
                 database.actDao().deleteAll();
                 database.stageDao().deleteAll();
 
@@ -80,19 +82,14 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     /**
-     * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
+     * Check whether the database already exists
      */
     private void updateDatabaseCreated(final Context context) {
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
-            Log.i(TAG, "Database initialized.");
             setDatabaseCreated();
         }
     }
     private void setDatabaseCreated(){
         mIsDatabaseCreated.postValue(true);
-    }
-
-    public LiveData<Boolean> getDatabaseCreated() {
-        return mIsDatabaseCreated;
     }
 }

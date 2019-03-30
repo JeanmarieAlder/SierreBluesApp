@@ -7,6 +7,9 @@ import com.example.sierrebluesappv1.database.entity.StageEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
+/**
+ * Async task to update stage in DB
+ */
 public class UpdateStage extends AsyncTask<StageEntity, Void, Void> {
     private Application application;
     private OnAsyncEventListener callback;

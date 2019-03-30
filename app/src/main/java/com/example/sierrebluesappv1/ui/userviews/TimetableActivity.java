@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.adapter.RecyclerAdapter;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.ui.act.ActDetailActivity;
@@ -63,6 +63,10 @@ public class TimetableActivity extends AppCompatActivity {
         listSunday.setVisibility(View.GONE);
 
     }
+
+    /**
+     *  Initializes views for friday, saturday and sunday.     *
+     */
     private void initializeViewModels(){
 
         //Friday scedule retrieved
@@ -147,6 +151,10 @@ public class TimetableActivity extends AppCompatActivity {
         listSunday.setAdapter(adapterSunday);
     }
 
+    /**
+     * Shows friday timetable and hides others
+     * @param view
+     */
     public void fridaySelected(View view){
         listFriday.setVisibility(View.VISIBLE);
         listSaturday.setVisibility(View.GONE);
@@ -156,6 +164,10 @@ public class TimetableActivity extends AppCompatActivity {
         textSaturday.setTypeface(null, Typeface.NORMAL);
         textSunday.setTypeface(null, Typeface.NORMAL);
     }
+    /**
+     * Shows Saturday timetable and hides others
+     * @param view
+     */
     public void saturdaySelected(View view){
         listFriday.setVisibility(View.GONE);
         listSaturday.setVisibility(View.VISIBLE);
@@ -165,6 +177,10 @@ public class TimetableActivity extends AppCompatActivity {
         textSaturday.setTypeface(null, Typeface.BOLD);
         textFriday.setTypeface(null, Typeface.NORMAL);
     }
+    /**
+     * Shows Sunday timetable and hides others
+     * @param view
+     */
     public void sundaySelected(View view){
         listFriday.setVisibility(View.GONE);
         listSaturday.setVisibility(View.GONE);

@@ -11,14 +11,11 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
-import com.example.sierrebluesappv1.database.entity.ActEntity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.database.entity.StageEntity;
-import com.example.sierrebluesappv1.ui.act.ActEditActivity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
-import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
 import com.example.sierrebluesappv1.viewmodel.stage.StageViewModel;
 
 public class StageEditActivity extends AppCompatActivity {
@@ -43,8 +40,10 @@ public class StageEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_stage);
 
+        //Initializes buttons, views, current ID and edit mode
         initialize();
 
+        //Creates ViewModel
         StageViewModel.Factory factory = new StageViewModel.Factory(
                 getApplication(), stageId);
         viewModel = ViewModelProviders.of(this, factory).get(StageViewModel.class);
@@ -56,6 +55,9 @@ public class StageEditActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Initializes views, buttons, id and editmode
+     */
     private void initialize() {
         esName = findViewById(R.id.scene_edit_text_name);
         esLocation = findViewById(R.id.scene_edit_text_address);
@@ -67,21 +69,18 @@ public class StageEditActivity extends AppCompatActivity {
         buttonCancel = findViewById(R.id.edit_stage_cancel_button);
         buttonDelete = findViewById(R.id.edit_stage_delete_button);
 
-        buttonSave.setOnClickListener(view -> {
-            saveChanges(esName.getText().toString());
-        });
-        buttonCancel.setOnClickListener(view -> {
-            cancelSelected();
-        });
-        buttonDelete.setOnClickListener(view -> {
-            deleteSelected();
-        });
+        buttonSave.setOnClickListener(view -> saveChanges(esName.getText().toString()));
+        buttonCancel.setOnClickListener(view -> cancelSelected());
+        buttonDelete.setOnClickListener(view -> deleteSelected());
 
         //get act ID from intent and set edit mode to false if new stage
         stageId = getIntent().getStringExtra("stageId");
         editMode = getIntent().getBooleanExtra("isEdit", true);
     }
 
+    /**
+     * Updates UI content if changes in DB occure
+     */
     private void updateContent() {
         if (stage != null) {
             esName.setText(stage.getName());
@@ -93,13 +92,20 @@ public class StageEditActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method when save button is used, will check if stage is new
+     * or is being edited.
+     * @param name ID of the stage to save
+     */
     private void saveChanges(String name) {
         if (!("".equals(name)) && name.length() < 30) {
             //Scene name is mandatory and less than 30 characters
             if (editMode) {
+                //Edit mode part
                 stage.setName(esName.getText().toString());
                 stage.setLocation(esLocation.getText().toString());
                 stage.setLocationWebsite(esWebsite.getText().toString());
+                //If max capacity is not filled, autofill it with 0
                 if(!"".equals(esMaxCapacity.getText().toString())){
                     stage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
                 }else{
@@ -121,10 +127,12 @@ public class StageEditActivity extends AppCompatActivity {
                     }
                 });
             } else {
+                //New stage part
                 StageEntity newStage = new StageEntity();
                 newStage.setName(esName.getText().toString());
                 newStage.setLocation(esLocation.getText().toString());
                 newStage.setLocationWebsite(esWebsite.getText().toString());
+                //If max capacity is not filled, autofill it with 0
                 if(!"".equals(esMaxCapacity.getText().toString())){
                     newStage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
                 }else{
@@ -132,42 +140,50 @@ public class StageEditActivity extends AppCompatActivity {
                 }
                 newStage.setSeatingPlaces(swSeatingPlaces.isChecked());
 
-
                 viewModel.createStage(newStage, new OnAsyncEventListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(getApplicationContext(), "Creation succesful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Creation succesful", Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(getApplicationContext(), "Creation failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Creation failed", Toast.LENGTH_LONG).show();
                     }
                 });
             }
-            onBackPressed();
+            onBackPressed(); //go back to previous activity
         } else {
             //Scene name has not been entered
-            Toast.makeText(getApplicationContext(), "Invalid stage name", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),
+                    "Invalid stage name", Toast.LENGTH_LONG).show();
         }
 
     }
 
+    /**
+     * Method when cancel is pressed, goes back to previous screen
+     */
     private void cancelSelected() {
         onBackPressed();
     }
 
+    /**
+     * Method when delete is pressed, will try to delete current stage.
+     */
     private void deleteSelected() {
         if(editMode){
             viewModel.deleteStage(stage, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Toast.makeText(getApplicationContext(), "Stage deleted", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Stage deleted", Toast.LENGTH_LONG).show();
                 }
-
                 @Override
                 public void onFailure(Exception e) {
-                    Toast.makeText(getApplicationContext(), "Error, couldn't delete the stage", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Error, couldn't delete the stage", Toast.LENGTH_LONG).show();
                 }
             });
         }

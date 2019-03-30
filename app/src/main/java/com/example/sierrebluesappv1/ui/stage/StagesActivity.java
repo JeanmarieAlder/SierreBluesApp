@@ -12,17 +12,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.sierrebluesappv1.AboutActivity;
+import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.R;
-import com.example.sierrebluesappv1.SettingsActivity;
+import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.adapter.RecyclerAdapter;
 import com.example.sierrebluesappv1.database.entity.StageEntity;
-import com.example.sierrebluesappv1.ui.act.ActDetailActivity;
-import com.example.sierrebluesappv1.ui.act.ActEditActivity;
-import com.example.sierrebluesappv1.ui.act.ActsActivity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.util.RecyclerViewItemClickListener;
-import com.example.sierrebluesappv1.viewmodel.act.ActsListViewModel;
 import com.example.sierrebluesappv1.viewmodel.stage.StagesListViewModel;
 
 import java.util.ArrayList;
@@ -79,6 +75,9 @@ public class StagesActivity extends AppCompatActivity {
         rView.setAdapter(adapter);
     }
 
+    /**
+     * Method when add button is selected, opens an edit activity
+     */
     private void addSelected() {
         Intent intent = new Intent(StagesActivity.this, StageEditActivity.class);
         intent.putExtra("isEdit", false);

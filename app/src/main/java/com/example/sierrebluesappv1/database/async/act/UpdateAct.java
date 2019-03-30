@@ -7,6 +7,9 @@ import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
+/**
+ * Async task to update act in DB
+ */
 public class UpdateAct extends AsyncTask<ActEntity, Void, Void> {
     private Application application;
     private OnAsyncEventListener callback;

@@ -29,6 +29,7 @@ public class ActEntity {
     @ColumnInfo(name = "ArtistCountry")
     private String artistCountry;
 
+    //TODO Not implemented yet. Artists images with Firebase.
     @ColumnInfo(name = "ArtistImage")
     private String artistImage;
 

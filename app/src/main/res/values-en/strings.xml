@@ -87,17 +87,6 @@
     <string name="pref_title_lightweight_mode">Lightweight mode</string>
     <string name="pref_description_lightweight_mode">Enable this setting to disable images and videos</string>
 
-    <!--<string name="pref_title_theme">Theme</string>-->
-    <!--<string name="pref_description_theme">Choose which theme is applied to this app</string>-->
-    <!--<string-array name="pref_list_theme">-->
-    <!--<item>Light</item>-->
-    <!--<item>Dark</item>-->
-    <!--</string-array>-->
-    <!--<string-array name="pref_values_theme">-->
-    <!--<item>1</item>-->
-    <!--<item>2</item>-->
-    <!--</string-array>-->
-
     <string name="pref_title_switch_theme">Theme</string>
     <string name="pref_description_switch">Slide to enable dark theme</string>
 

@@ -12,12 +12,16 @@ import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
 import java.util.List;
 
+/**
+ * Act repository class, holds all acts information from Database
+ * and exposes it to ViewModels.
+ */
 public class ActRepository {
     private static ActRepository instance;
 
     public ActRepository() {
     }
-
+    //Repository instance must be unique, singleton pattern
     public static ActRepository getInstance() {
         if (instance == null) {
             synchronized (ActRepository.class) {
@@ -33,9 +37,17 @@ public class ActRepository {
         return ((BaseApp) application).getDatabase().actDao().getById(idAct);
     }
 
+    //Get all acts
     public LiveData<List<ActEntity>> getAll(Application application){
         return ((BaseApp)application).getDatabase().actDao().getAll();
     }
+
+    /**
+     * Retrieves all acts for a certain day (fri, sat, sun)
+     * @param day the day of the show
+     * @param application the current application
+     * @return a list of all acts fo the specified day
+     */
     public LiveData<List<ActEntity>> getActsByDay(final String day,
                                                   Application application){
         if(day.equals("Friday")){
