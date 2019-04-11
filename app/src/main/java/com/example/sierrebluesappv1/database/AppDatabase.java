@@ -21,6 +21,8 @@ import java.util.concurrent.Executors;
  * App database, has an act table and a stage table.
  * please don't forget to increment version number if you make changes
  * in running state.
+ * Will be obsolete for second version
+ * This is the first line change on the new branch called "firebase".
  */
 @Database(entities = {ActEntity.class, StageEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
