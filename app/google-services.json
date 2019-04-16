@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "384971616897",
+    "firebase_url": "https://sierre-blues-festival-v2.firebaseio.com",
+    "project_id": "sierre-blues-festival-v2",
+    "storage_bucket": "sierre-blues-festival-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384971616897:android:2a5655d4a39d7bfb",
+        "android_client_info": {
+          "package_name": "com.example.sierrebluesappv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384971616897-shbq9l997el2o7bc7g3j8tmluod4n61h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB36kT59eNjVZoIjjxpnPUjL3o_eIa8SfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384971616897-shbq9l997el2o7bc7g3j8tmluod4n61h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
