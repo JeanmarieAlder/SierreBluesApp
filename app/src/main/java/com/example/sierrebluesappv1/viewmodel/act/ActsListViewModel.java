@@ -13,6 +13,7 @@ import com.example.sierrebluesappv1.database.repository.ActRepository;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ActsListViewModel extends AndroidViewModel {
@@ -22,7 +23,8 @@ public class ActsListViewModel extends AndroidViewModel {
     private final MediatorLiveData<List<ActEntity>> observableAct;
 
     public ActsListViewModel(@NonNull Application application,
-                                ActRepository actRepository) {
+                                ActRepository actRepository)
+    {
         super(application);
 
         this.application = application;
@@ -35,6 +37,8 @@ public class ActsListViewModel extends AndroidViewModel {
 
         LiveData<List<ActEntity>> acts =
                 actRepository.getAll();
+
+
 
         // observe the changes of the entities from the database and forward them
         observableAct.addSource(acts, observableAct::setValue);

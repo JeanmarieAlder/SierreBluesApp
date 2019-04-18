@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ActListLiveData extends LiveData<List<ActEntity>> {
@@ -47,6 +48,14 @@ public class ActListLiveData extends LiveData<List<ActEntity>> {
             entity.setIdAct(childSnapshot.getKey());
             acts.add(entity);
         }
+
+        //Sort acts by artist name
+        acts.sort(new Comparator<ActEntity>() {
+            @Override
+            public int compare(ActEntity o1, ActEntity o2) {
+                return o1.getArtistName().compareTo(o2.getArtistName());
+            }
+        });
         return acts;
     }
 }

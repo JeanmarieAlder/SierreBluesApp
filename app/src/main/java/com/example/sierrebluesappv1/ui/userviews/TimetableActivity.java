@@ -23,6 +23,8 @@ import com.example.sierrebluesappv1.util.RecyclerViewItemClickListener;
 import com.example.sierrebluesappv1.viewmodel.act.ActsListViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TimetableActivity extends AppCompatActivity {
@@ -95,6 +97,7 @@ public class TimetableActivity extends AppCompatActivity {
                 adapterFriday.setData(actsFriday);
             }
         });
+
         listFriday.setAdapter(adapterFriday);
 
         //Saturday scedule retrieved

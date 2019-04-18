@@ -11,6 +11,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class QuerryActLiveData extends LiveData<List<ActEntity>> {
@@ -33,6 +34,7 @@ public class QuerryActLiveData extends LiveData<List<ActEntity>> {
     private class MyValueEventListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
             setValue(toActs(dataSnapshot));
         }
 
@@ -47,6 +49,14 @@ public class QuerryActLiveData extends LiveData<List<ActEntity>> {
             entity.setIdAct(childSnapshot.getKey());
             acts.add(entity);
         }
+
+        //Sort acts by start time (ascending)
+        acts.sort(new Comparator<ActEntity>() {
+            @Override
+            public int compare(ActEntity o1, ActEntity o2) {
+                return o1.getStartTime().compareTo(o2.getStartTime());
+            }
+        });
         return acts;
     }
 }
