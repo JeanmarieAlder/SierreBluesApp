@@ -21,7 +21,7 @@ import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
 
 public class ActEditActivity extends AppCompatActivity {
 
-    private long actId;
+    private String actId;
     private ActEntity act;
     private ActViewModel viewModel;
     private boolean editMode;
@@ -84,7 +84,7 @@ public class ActEditActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(view -> deleteSelected());
 
         //get act ID from intent and set edit mode to false if new act
-        actId = getIntent().getLongExtra("actId", 0l);
+        actId = getIntent().getStringExtra("actId");
         editMode = getIntent().getBooleanExtra("isEdit", true);
     }
 
@@ -127,15 +127,11 @@ public class ActEditActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Exception e) {
-                    if(e.getMessage().contains("FOREIGN KEY")){
-                        Toast.makeText(getApplicationContext(),
-                                "Update error: stage name doesn't exist",
-                                Toast.LENGTH_LONG).show();
-                    }else{
+
                         Toast.makeText(getApplicationContext(),
                                 "Update failed", Toast.LENGTH_LONG).show();
                     }
-                }
+
             });
         }else{
             ActEntity newAct = new ActEntity();

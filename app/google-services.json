@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "384971616897-qvgomv2dum62j2hrjqrcfactjv9i3t5c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sierrebluesappv1",
+            "certificate_hash": "5a643c1d91dd0ae9481797ee593a1533ddebeff8"
+          }
+        },
+        {
           "client_id": "384971616897-shbq9l997el2o7bc7g3j8tmluod4n61h.apps.googleusercontent.com",
           "client_type": 3
         }

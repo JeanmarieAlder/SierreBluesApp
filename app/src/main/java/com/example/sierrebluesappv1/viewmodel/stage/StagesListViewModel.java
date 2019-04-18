@@ -18,21 +18,19 @@ import java.util.List;
 
 public class StagesListViewModel extends AndroidViewModel {
 
-    private Application application;
     private StageRepository repository;
 
     private final MediatorLiveData<List<StageEntity>> observableStage;
 
     public StagesListViewModel(@NonNull Application application, StageRepository stageRepository) {
         super(application);
-        this.application = application;
         this.repository = stageRepository;
 
         observableStage = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
         observableStage.setValue(null);
 
-        LiveData<List<StageEntity>> stages = stageRepository.getAll(application);
+        LiveData<List<StageEntity>> stages = stageRepository.getAll();
 
         // observe the changes of the entities from the database and forward them
         observableStage.addSource(stages, observableStage::setValue);
@@ -61,7 +59,7 @@ public class StagesListViewModel extends AndroidViewModel {
     }
 
     public void deleteStage(StageEntity stage, OnAsyncEventListener callback){
-        repository.delete(stage, callback, application);
+        repository.delete(stage, callback);
     }
 
     public LiveData<List<StageEntity>> getAllStages(){

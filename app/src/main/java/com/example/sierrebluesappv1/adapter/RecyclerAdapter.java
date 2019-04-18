@@ -74,7 +74,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         if (item.getClass().equals(StageEntity.class)) {
             //View for stages
             holder.textViewName.setText(((StageEntity) item).getName());
-            holder.textViewDateAddress.setText(((StageEntity) item).getLocation());
+            holder.textViewDateAddress.setText(((StageEntity) item).getAddress());
             String places;
             places = String.valueOf(((StageEntity) item).getMaxCapacity());
             if (((StageEntity) item).isSeatingPlaces()) {
@@ -143,7 +143,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                         StageEntity oldStage = (StageEntity) mData.get(newItemPosition);
                         return Objects.equals(newStage.getName(), oldStage.getName())
                                 && Objects.equals(newStage.getName(), oldStage.getName())
-                                && Objects.equals(newStage.getLocation(), oldStage.getLocation())
+                                && Objects.equals(newStage.getAddress(), oldStage.getAddress())
                                 && Objects.equals(newStage.getMaxCapacity(), oldStage.getMaxCapacity())
                                 && Objects.equals(newStage.isSeatingPlaces(), oldStage.isSeatingPlaces())
                                 ;

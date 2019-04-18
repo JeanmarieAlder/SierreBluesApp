@@ -1,14 +1,13 @@
 package com.example.sierrebluesappv1.database.repository;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
-import com.example.sierrebluesappv1.database.async.act.CreateAct;
-import com.example.sierrebluesappv1.database.async.act.DeleteAct;
-import com.example.sierrebluesappv1.database.async.act.UpdateAct;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
+import com.example.sierrebluesappv1.database.firebase.ActListLiveData;
+import com.example.sierrebluesappv1.database.firebase.ActLiveData;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
-import com.example.sierrebluesappv1.viewmodel.BaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -33,46 +32,71 @@ public class ActRepository {
         return instance;
     }
 
-    public LiveData<ActEntity> getAct(final String idAct, Application application){
-        return ((BaseApp) application).getDatabase().actDao().getById(idAct);
+    public LiveData<ActEntity> getAct(final String idAct){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("acts")
+                .child(idAct);
+        return new ActLiveData(reference);
     }
 
     //Get all acts
-    public LiveData<List<ActEntity>> getAll(Application application){
-        return ((BaseApp)application).getDatabase().actDao().getAll();
+    public LiveData<List<ActEntity>> getAll(){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("acts");
+        return new ActListLiveData(reference);
     }
 
     /**
      * Retrieves all acts for a certain day (fri, sat, sun)
      * @param day the day of the show
-     * @param application the current application
      * @return a list of all acts fo the specified day
      */
-    public LiveData<List<ActEntity>> getActsByDay(final String day,
-                                                  Application application){
-        if(day.equals("Friday")){
-            return ((BaseApp)application).getDatabase().actDao().getFridayActs();
-        }else if(day.equals("Saturday")){
-            return ((BaseApp)application).getDatabase().actDao().getSaturdayActs();
-        }else if(day.equals("Sunday")){
-            return ((BaseApp)application).getDatabase().actDao().getSundayActs();
-        }else{
-            return ((BaseApp)application).getDatabase().actDao().getAll();
-        }
+    public LiveData<List<ActEntity>> getActsByDay(final String day){
+
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("acts");
+        return new ActListLiveData(ref);
     }
 
-    public void insert(final ActEntity act, OnAsyncEventListener callback,
-                       Application application) {
-        new CreateAct(application, callback).execute(act);
+    public void insert(final ActEntity act, OnAsyncEventListener callback) {
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("acts");
+        String id = ref.push().getKey();
+                FirebaseDatabase.getInstance()
+                        .getReference("acts")
+                        .child(id)
+                        .setValue(act, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void update(final ActEntity act, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateAct(application, callback).execute(act);
+    public void update(final ActEntity act, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("acts")
+                .child(act.getIdAct())
+                .updateChildren(act.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void delete(final ActEntity act, OnAsyncEventListener callback,
-                       Application application) {
-        new DeleteAct(application, callback).execute(act);
+    public void delete(final ActEntity act, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("acts")
+                .child(act.getIdAct())
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 }

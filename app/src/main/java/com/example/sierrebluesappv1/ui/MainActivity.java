@@ -14,11 +14,9 @@ import android.widget.Toast;
 import com.example.sierrebluesappv1.R;
 import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.ui.nav.WelcomeActivity;
-import com.example.sierrebluesappv1.database.AppDatabase;
 import com.example.sierrebluesappv1.ui.nav.AboutActivity;
 import com.example.sierrebluesappv1.ui.nav.DashboardActivity;
 
-import static com.example.sierrebluesappv1.database.AppDatabase.initializeDemoData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.setCancelable(false);
         alertDialog.setMessage(getString(R.string.alert_demo_data_text));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_reset), (dialog, which) ->{
-            initializeDemoData(AppDatabase.getInstance(this));
             Toast.makeText(this, getString(R.string.demo_data_initiated), Toast.LENGTH_LONG).show();
         });
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel), (dialog, which) -> alertDialog.dismiss());

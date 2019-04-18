@@ -15,22 +15,24 @@ import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
 public class ActViewModel extends AndroidViewModel {
 
-    private Application application;
     private ActRepository repository;
     private final MediatorLiveData<ActEntity> observableAct;
 
     public ActViewModel(@NonNull Application application,
-                        final Long actId, ActRepository actRepository) {
+                        final String actId, ActRepository actRepository) {
         super(application);
 
-        this.application = application;
         repository = actRepository;
         observableAct = new MediatorLiveData<>();
         observableAct.setValue(null); //Null by default until we get data from DB
-        LiveData<ActEntity> act = repository.getAct(actId.toString(), application);
+        if(actId != null)
+        {
+            LiveData<ActEntity> act = repository.getAct(actId);
 
-        //observer changes from db and forward them
-        observableAct.addSource(act, observableAct::setValue);
+            //observer changes from db and forward them
+            observableAct.addSource(act, observableAct::setValue);
+        }
+
     }
 
     /**
@@ -41,11 +43,11 @@ public class ActViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final Long actId;
+        private final String actId;
 
         private final ActRepository repository;
 
-        public Factory(@NonNull Application application, Long actId) {
+        public Factory(@NonNull Application application, String actId) {
             this.application = application;
             this.actId = actId;
             repository = ((BaseApp) application).getActRepository();
@@ -66,15 +68,15 @@ public class ActViewModel extends AndroidViewModel {
     }
 
     public void createAct(ActEntity act, OnAsyncEventListener callback) {
-        repository.insert(act, callback, application);
+        repository.insert(act, callback);
     }
 
     public void deleteAct(ActEntity act, OnAsyncEventListener callback){
-        repository.delete(act, callback, application);
+        repository.delete(act, callback);
     }
 
     public void updateAct(ActEntity act, OnAsyncEventListener callback) {
-        repository.update(act, callback, application);
+        repository.update(act, callback);
     }
 
 

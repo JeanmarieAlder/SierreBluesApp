@@ -34,18 +34,18 @@ public class ActsListViewModel extends AndroidViewModel {
         observableAct.setValue(null);
 
         LiveData<List<ActEntity>> acts =
-                actRepository.getAll(application);
+                actRepository.getAll();
 
         // observe the changes of the entities from the database and forward them
         observableAct.addSource(acts, observableAct::setValue);
     }
 
     public LiveData<List<ActEntity>> getActsByDay(String day) {
-        return repository.getActsByDay(day, application);
+        return repository.getActsByDay(day);
     }
 
     public void deleteAct(ActEntity act, OnAsyncEventListener callback){
-        repository.delete(act, callback, application);
+        repository.delete(act, callback);
     }
 
     public LiveData<List<ActEntity>> getAllActs(){

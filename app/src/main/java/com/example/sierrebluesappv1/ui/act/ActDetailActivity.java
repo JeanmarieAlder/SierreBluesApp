@@ -23,7 +23,7 @@ import com.example.sierrebluesappv1.viewmodel.act.ActViewModel;
 
 public class ActDetailActivity extends AppCompatActivity {
 
-    private long actId;
+    private String actId;
     private boolean isUser;
     private ActEntity act;
     private ActViewModel viewModel;
@@ -116,7 +116,7 @@ public class ActDetailActivity extends AppCompatActivity {
         });
 
         //get act ID from intent and set edit mode to false if new act
-        actId = getIntent().getLongExtra("actId", 0l);
+        actId = getIntent().getStringExtra("actId");
     }
 
     /**
@@ -124,6 +124,7 @@ public class ActDetailActivity extends AppCompatActivity {
      * tries to delete the current act from DB
      */
     private void deleteSelected() {
+        act.setIdAct(actId);
         viewModel.deleteAct(act, new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
@@ -142,7 +143,7 @@ public class ActDetailActivity extends AppCompatActivity {
      * Edit the current act. Opens the actEditActivity with the current act.
      * @param idAct current act ID
      */
-    private void edit(Long idAct) {
+    private void edit(String idAct) {
         Intent intent = new Intent(ActDetailActivity.this, ActEditActivity.class);
         intent.putExtra("actId", idAct);
         startActivity(intent);

@@ -30,7 +30,7 @@ public class StageDetailActivity extends AppCompatActivity {
     private TextView tvMaxCapacity;
     private TextView tvSeatingPlaces;
 
-    StageEntity stage;
+    private StageEntity stage;
     private StageViewModel viewModel;
     private String stageId;
     private boolean isUser;
@@ -47,7 +47,7 @@ public class StageDetailActivity extends AppCompatActivity {
                 getApplication(), stageId);
         viewModel = ViewModelProviders.of(this, factory).get(StageViewModel.class);
         viewModel.getStage().observe(this, stageEntity -> {
-            //Observes if data has changed
+
             if (stageEntity != null) {
                 stage = stageEntity;
                 updateContent();
@@ -60,9 +60,9 @@ public class StageDetailActivity extends AppCompatActivity {
      */
     private void updateContent() {
         if (stage != null) {
-            tvName.setText(stage.getName());
-            tvLocation.setText(stage.getLocation());
-            tvWebsite.setText(stage.getLocationWebsite());
+            tvName.setText(stageId);
+            tvLocation.setText(stage.getAddress());
+            tvWebsite.setText(stage.getWebsite());
             tvMaxCapacity.setText(String.valueOf(stage.getMaxCapacity()));
             //Seating place is boolean, true is equal to yes.
             if(stage.isSeatingPlaces()){
@@ -78,6 +78,9 @@ public class StageDetailActivity extends AppCompatActivity {
      * Initializes views, buttons and IDs
      */
     private void initialize() {
+        //get act ID from intent
+        stageId = getIntent().getStringExtra("stageId");
+
         buttonEdit = findViewById(R.id.detail_stage_edit_button);
         buttonDelete = findViewById(R.id.detail_stage_delete_button);
         buttonCancel = findViewById(R.id.detail_stage_cancel_button);
@@ -89,9 +92,9 @@ public class StageDetailActivity extends AppCompatActivity {
             buttonDelete.setVisibility(View.GONE);
             buttonEdit.setVisibility(View.GONE);
         }else{
-            buttonEdit.setOnClickListener(view -> edit(stage.getName()));
+            buttonEdit.setOnClickListener(view -> edit(stageId));
 
-            buttonDelete.setOnClickListener(view -> deleteSelected());
+            buttonDelete.setOnClickListener(view -> deleteSelected(stageId));
         }
         buttonCancel.setOnClickListener(view -> onBackPressed());
 
@@ -101,26 +104,29 @@ public class StageDetailActivity extends AppCompatActivity {
         tvMaxCapacity = findViewById(R.id.stage_detail_text_capacity);
         tvSeatingPlaces = findViewById(R.id.stage_detail_text_seating);
 
-        //get act ID from intent
-        stageId = getIntent().getStringExtra("stageId");
+
     }
 
     /**
      * Method when delete button is used.
      * Will try to delete the current act and go back to previous screen.
      */
-    private void deleteSelected() {
-        viewModel.deleteStage(stage, new OnAsyncEventListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(getApplicationContext(), "Stage deleted", Toast.LENGTH_LONG).show();
-            }
+    private void deleteSelected(String name) {
+        if(stage != null){
+            stage.setName(name);
+            viewModel.deleteStage(stage, new OnAsyncEventListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(getApplicationContext(), "Stage deleted", Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onFailure(Exception e) {
-                Toast.makeText(getApplicationContext(), "Error, couldn't delete the stage", Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Exception e) {
+                    Toast.makeText(getApplicationContext(), "Error, couldn't delete the stage", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
         onBackPressed();
     }
 

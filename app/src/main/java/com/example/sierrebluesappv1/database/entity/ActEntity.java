@@ -1,52 +1,20 @@
 package com.example.sierrebluesappv1.database.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "Act",
-        foreignKeys =
-        @ForeignKey(
-                entity = StageEntity.class,
-                parentColumns = "StageName",
-                childColumns = "IdStage",
-                onDelete = ForeignKey.CASCADE
-        ), indices = {
-        @Index(
-                value = {"IdStage"}
-        )})
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ActEntity {
-
-    @ColumnInfo(name = "IdAct")
-    @PrimaryKey(autoGenerate = true)
-    private Long idAct;
-
-    @ColumnInfo(name = "ArtistName")
+    private String idAct;
     private String artistName;
-
-    @ColumnInfo(name = "ArtistCountry")
     private String artistCountry;
-
-    //TODO Not implemented yet. Artists images with Firebase.
-    @ColumnInfo(name = "ArtistImage")
     private String artistImage;
-
-    @ColumnInfo(name = "Genre")
     private String genre;
-
-    @ColumnInfo(name = "Date")
     private String date;
-
-    @ColumnInfo(name = "StartTime")
     private String startTime;
-
-    @ColumnInfo(name = "Price")
     private float price;
-
-
-    @ColumnInfo(name = "IdStage")
     private String idStage;
 
     public ActEntity(String artistName, String artistCountry,
@@ -61,16 +29,14 @@ public class ActEntity {
         this.price = price;
         this.idStage = idStage;
     }
+    public ActEntity() {}
 
-    public ActEntity() {
-
-    }
-
-    public Long getIdAct() {
+    @Exclude
+    public String getIdAct() {
         return idAct;
     }
 
-    public void setIdAct(Long idAct) {
+    public void setIdAct(String idAct) {
         this.idAct = idAct;
     }
 
@@ -136,5 +102,23 @@ public class ActEntity {
 
     public void setIdStage(String idStage) {
         this.idStage = idStage;
+    }
+
+    @Override
+    public String toString() { return artistName; }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("artistName", artistName);
+        result.put("artistCountry", artistCountry);
+        result.put("artistImage", artistImage);
+        result.put("genre", genre);
+        result.put("startTime", startTime);
+        result.put("date", date);
+        result.put("price", price);
+        result.put("idStage", idStage);
+
+        return result;
     }
 }

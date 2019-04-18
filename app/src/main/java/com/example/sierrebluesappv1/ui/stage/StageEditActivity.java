@@ -2,6 +2,7 @@ package com.example.sierrebluesappv1.ui.stage;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import com.example.sierrebluesappv1.viewmodel.stage.StageViewModel;
 public class StageEditActivity extends AppCompatActivity {
 
     private String stageId;
+    private String initialStageId;
     private StageEntity stage;
     private StageViewModel viewModel;
     private boolean editMode;
@@ -39,6 +41,8 @@ public class StageEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_stage);
+
+        stage = new StageEntity();
 
         //Initializes buttons, views, current ID and edit mode
         initialize();
@@ -75,6 +79,7 @@ public class StageEditActivity extends AppCompatActivity {
 
         //get act ID from intent and set edit mode to false if new stage
         stageId = getIntent().getStringExtra("stageId");
+        initialStageId = stageId;
         editMode = getIntent().getBooleanExtra("isEdit", true);
     }
 
@@ -83,9 +88,9 @@ public class StageEditActivity extends AppCompatActivity {
      */
     private void updateContent() {
         if (stage != null) {
-            esName.setText(stage.getName());
-            esLocation.setText(stage.getLocation());
-            esWebsite.setText(stage.getLocationWebsite());
+            esName.setText(stageId);
+            esLocation.setText(stage.getAddress());
+            esWebsite.setText(stage.getWebsite());
             esMaxCapacity.setText(String.valueOf(stage.getMaxCapacity()));
             swSeatingPlaces.setChecked(stage.isSeatingPlaces());
 
@@ -98,13 +103,39 @@ public class StageEditActivity extends AppCompatActivity {
      * @param name ID of the stage to save
      */
     private void saveChanges(String name) {
+        //checks if name (id) has changed
+        if(!(name.equals(initialStageId)) && editMode){
+            final AlertDialog alertDialogStageEdit = new AlertDialog.Builder(this).create();
+            alertDialogStageEdit.setTitle(getString(R.string.alert_edit_stage));
+            alertDialogStageEdit.setCancelable(false);
+            alertDialogStageEdit.setMessage(getString(R.string.alert_stage_edit_text));
+            alertDialogStageEdit.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_save_copy), (dialog, which) ->{
+                Toast.makeText(this, "Saved a copy", Toast.LENGTH_LONG).show();
+                performSave(name);
+            });
+            alertDialogStageEdit.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel),
+                    (dialog, which) ->{
+                        alertDialogStageEdit.dismiss();
+                        return;
+                    } );
+            alertDialogStageEdit.show();
+        }else{
+            performSave(name);
+        }
+
+
+
+    }
+
+    private void performSave(String name)
+    {
         if (!("".equals(name)) && name.length() < 30) {
             //Scene name is mandatory and less than 30 characters
             if (editMode) {
                 //Edit mode part
                 stage.setName(esName.getText().toString());
-                stage.setLocation(esLocation.getText().toString());
-                stage.setLocationWebsite(esWebsite.getText().toString());
+                stage.setAddress(esLocation.getText().toString());
+                stage.setWebsite(esWebsite.getText().toString());
                 //If max capacity is not filled, autofill it with 0
                 if(!"".equals(esMaxCapacity.getText().toString())){
                     stage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
@@ -130,8 +161,8 @@ public class StageEditActivity extends AppCompatActivity {
                 //New stage part
                 StageEntity newStage = new StageEntity();
                 newStage.setName(esName.getText().toString());
-                newStage.setLocation(esLocation.getText().toString());
-                newStage.setLocationWebsite(esWebsite.getText().toString());
+                newStage.setAddress(esLocation.getText().toString());
+                newStage.setWebsite(esWebsite.getText().toString());
                 //If max capacity is not filled, autofill it with 0
                 if(!"".equals(esMaxCapacity.getText().toString())){
                     newStage.setMaxCapacity(Integer.parseInt(esMaxCapacity.getText().toString()));
@@ -159,7 +190,6 @@ public class StageEditActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Invalid stage name", Toast.LENGTH_LONG).show();
         }
-
     }
 
     /**
@@ -174,6 +204,7 @@ public class StageEditActivity extends AppCompatActivity {
      */
     private void deleteSelected() {
         if(editMode){
+            stage.setName(stageId);
             viewModel.deleteStage(stage, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {

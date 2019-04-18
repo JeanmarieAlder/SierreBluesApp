@@ -25,8 +25,10 @@
     <string name="timetable_sunday_label">Sunday, June 15</string>
     <string name="dash"> - </string>
     <string name="alert_demo_data">Reload demo data</string>
+    <string name="alert_edit_stage">Name changed</string>
     <string name="alert_demo_data_text">Are you sure you want to erase all data and replace them with demo data?</string>
     <string name="action_reset">Reset data</string>
+    <string name="action_save_copy" translatable="false">Save a copy</string>
     <string name="demo_data_initiated">Demo data has been initialized.</string>
     <string name="action_cancel">Cancel</string>
     <string name="message_delete_edit">Long press to Edit or Delete</string>
@@ -58,6 +60,8 @@
     <string name="stage_capacity">Capacity</string>
     <string name="stage_places">Places</string>
     <string name="about_text">This application was made by Jean-Marie Alder and Alexandre Schweizer for the module 644-1 Mobile and Cloud Computing.</string>
+
+    <string name="alert_stage_edit_text">Changing stage name will create a new stage. Continue?</string>
 
     <string-array name="dates">
         <item>Friday</item>

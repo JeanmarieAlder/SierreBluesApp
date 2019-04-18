@@ -17,22 +17,23 @@ import com.example.sierrebluesappv1.viewmodel.BaseApp;
 
 public class StageViewModel extends AndroidViewModel {
 
-    private Application application;
     private StageRepository repository;
     private final MediatorLiveData<StageEntity> observableStage;
 
     public StageViewModel(@NonNull Application application,
                         final String stageId, StageRepository stageRepository) {
         super(application);
-
-        this.application = application;
         repository = stageRepository;
         observableStage = new MediatorLiveData<>();
         observableStage.setValue(null); //Null by default until we get data from DB
-        LiveData<StageEntity> stage = repository.getStage(stageId, application);
 
-        //observer changes from db and forward them
-        observableStage.addSource(stage, observableStage::setValue);
+        if(stageId != null){
+            LiveData<StageEntity> stage = repository.getStage(stageId);
+
+            //observer changes from db and forward them
+            observableStage.addSource(stage, observableStage::setValue);
+        }
+
     }
 
     /**
@@ -68,14 +69,14 @@ public class StageViewModel extends AndroidViewModel {
     }
 
     public void createStage(StageEntity stage, OnAsyncEventListener callback) {
-        repository.insert(stage, callback, application);
+        repository.insert(stage, callback);
     }
 
     public void deleteStage(StageEntity stage, OnAsyncEventListener callback) {
-        repository.delete(stage, callback, application);
+        repository.delete(stage, callback);
     }
 
     public void updateStage(StageEntity stage, OnAsyncEventListener callback) {
-        repository.update(stage, callback, application);
+        repository.update(stage, callback);
     }
 }

@@ -1,68 +1,49 @@
 package com.example.sierrebluesappv1.database.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+import com.google.firebase.database.Exclude;
 
-@Entity(tableName = "Stage",  primaryKeys = {"StageName"})
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class StageEntity {
-
-
-    @NonNull
-    @ColumnInfo(name = "StageName")
     private String name;
-
-    @ColumnInfo(name = "Location")
-    private String location;
-
-    @ColumnInfo(name = "LocationWebsite")
-    private String locationWebsite;
-
-    @ColumnInfo(name = "MaxCapacity")
+    private String address;
+    private String website;
     private int maxCapacity;
-
-    @ColumnInfo(name = "SeatingPlaces")
     private boolean seatingPlaces;
 
-    public StageEntity(String name, String location,
-                       String locationWebsite, int maxCapacity, boolean seatingPlaces) {
+    public StageEntity(String name, String address,
+                       String website, int maxCapacity, boolean seatingPlaces) {
         this.name = name;
-        this.location = location;
-        this.locationWebsite = locationWebsite;
+        this.address = address;
+        this.website = website;
         this.maxCapacity = maxCapacity;
         this.seatingPlaces = seatingPlaces;
     }
 
-    public StageEntity() {
+    public StageEntity() { }
 
-    }
-
-
-    public String getName() {
-        return name;
-    }
+    @Exclude
+    public String getName() {return name;}
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getLocationWebsite() {
-        return locationWebsite;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setLocationWebsite(String locationWebsite) {
-        this.locationWebsite = locationWebsite;
-    }
+    public void setWebsite(String website) {this.website = website;}
 
     public int getMaxCapacity() {
         return maxCapacity;
@@ -78,5 +59,21 @@ public class StageEntity {
 
     public void setSeatingPlaces(boolean seatingPlaces) {
         this.seatingPlaces = seatingPlaces;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("address", address);
+        result.put("website", website);
+        result.put("maxCapacity", maxCapacity);
+        result.put("seatingPlaces", seatingPlaces);
+
+        return result;
     }
 }

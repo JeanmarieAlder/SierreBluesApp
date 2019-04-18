@@ -58,6 +58,8 @@
     <string name="stage_places">Places</string>
     <string name="about_text">Cette application a été réalisée par Jean-Marie Alder et Alexandre Schweizer dans le cadre du module 644-1 Mobile and Cloud Computing.</string>
 
+    <string name="alert_stage_edit_text">Changing stage name will create a new stage. Continue?</string>
+
     <string-array name="dates">
         <item>Vendredi</item>
         <item>Samedi</item>

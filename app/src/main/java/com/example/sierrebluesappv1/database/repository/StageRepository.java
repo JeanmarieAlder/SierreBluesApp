@@ -1,14 +1,13 @@
 package com.example.sierrebluesappv1.database.repository;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
-import com.example.sierrebluesappv1.database.async.stage.CreateStage;
-import com.example.sierrebluesappv1.database.async.stage.DeleteStage;
-import com.example.sierrebluesappv1.database.async.stage.UpdateStage;
 import com.example.sierrebluesappv1.database.entity.StageEntity;
+import com.example.sierrebluesappv1.database.firebase.StageListLiveData;
+import com.example.sierrebluesappv1.database.firebase.StageLiveData;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
-import com.example.sierrebluesappv1.viewmodel.BaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -34,27 +33,59 @@ public class StageRepository {
         return instance;
     }
 
-    public LiveData<StageEntity> getStage(final String idStage, Application application){
-        return ((BaseApp) application).getDatabase().stageDao().getByName(idStage);
+    public LiveData<StageEntity> getStage(final String idStage){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("stages")
+                .child(idStage);
+        return new StageLiveData(reference);
     }
 
     //get all stages
-    public LiveData<List<StageEntity>> getAll(Application application){
-        return ((BaseApp) application).getDatabase().stageDao().getAll();
+    public LiveData<List<StageEntity>> getAll(){
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("stages");
+        return new StageListLiveData(reference);
     }
 
-    public void insert(final StageEntity stage, OnAsyncEventListener callback,
-                       Application application) {
-        new CreateStage(application, callback).execute(stage);
+    public void insert(final StageEntity stage, OnAsyncEventListener callback) {
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("stages");
+        String id = stage.getName();
+        FirebaseDatabase.getInstance()
+                .getReference("stages")
+                .child(id)
+                .setValue(stage, (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void update(final StageEntity stage, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateStage(application, callback).execute(stage);
+    public void update(final StageEntity stage, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("stages")
+                .child(stage.getName())
+                .updateChildren(stage.toMap(), (databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
-    public void delete(final StageEntity stage, OnAsyncEventListener callback,
-                       Application application) {
-        new DeleteStage(application, callback).execute(stage);
+    public void delete(final StageEntity stage, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("stages")
+                .child(stage.getName())
+                .removeValue((databaseError, databaseReference) -> {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 }

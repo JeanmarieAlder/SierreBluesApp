@@ -61,6 +61,8 @@
     <string name="about_text">Dieser Antrag wurde von Jean-Marie Alder und Alexandre Schweizer
         für das Modul 644-1 Mobile and Cloud Computing gestellt.</string>
 
+    <string name="alert_stage_edit_text">Changing stage name will create a new stage. Continue?</string>
+
     <string-array name="dates">
         <item>Freitag</item>
         <item>Samstag</item>
