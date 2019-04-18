@@ -51,6 +51,10 @@ public class StageDetailActivity extends AppCompatActivity {
             if (stageEntity != null) {
                 stage = stageEntity;
                 updateContent();
+            }else{
+                stageEntity = new StageEntity();
+                stageEntity.setName(stageId);
+                updateContent();
             }
         });
     }

@@ -5,9 +5,11 @@ import android.arch.lifecycle.LiveData;
 import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.database.firebase.ActListLiveData;
 import com.example.sierrebluesappv1.database.firebase.ActLiveData;
+import com.example.sierrebluesappv1.database.firebase.QuerryActLiveData;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.List;
 
@@ -53,9 +55,12 @@ public class ActRepository {
      */
     public LiveData<List<ActEntity>> getActsByDay(final String day){
 
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("acts");
-        return new ActListLiveData(ref);
+        Query ref = FirebaseDatabase.getInstance()
+                .getReference("acts")
+                .orderByChild("date")
+                .equalTo(day);
+
+        return new QuerryActLiveData(ref);
     }
 
     public void insert(final ActEntity act, OnAsyncEventListener callback) {
