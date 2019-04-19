@@ -1,0 +1,28 @@
+[debug] [2019-04-19T16:41:01.458Z] ----------------------------------------------------------------------
+[debug] [2019-04-19T16:41:01.461Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\al_sc\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2019-04-19T16:41:01.461Z] CLI Version:   6.7.0
+[debug] [2019-04-19T16:41:01.461Z] Platform:      win32
+[debug] [2019-04-19T16:41:01.461Z] Node Version:  v10.15.3
+[debug] [2019-04-19T16:41:01.462Z] Time:          Fri Apr 19 2019 18:41:01 GMT+0200 (GMT+02:00)
+[debug] [2019-04-19T16:41:01.462Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-19T16:41:01.474Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-19T16:41:01.475Z] > authorizing via signed-in user
+[debug] [2019-04-19T16:41:01.475Z] [iam] checking project sierre-blues-festival-v2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-04-19T16:41:01.477Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sierre-blues-festival-v2:testIamPermissions  
+
+[debug] [2019-04-19T16:41:02.389Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'sierre-blues-festival-v2'...
+[info] 
+[info] i  deploying functions
+[debug] [2019-04-19T16:41:02.404Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received type undefined
+    at validateString (internal/validators.js:125:11)
+    at Object.join (path.js:427:7)
+    at Config.path (C:\Users\al_sc\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:142:39)
+    at getChildEnvironment (C:\Users\al_sc\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:50:49)
+    at runTargetCommands (C:\Users\al_sc\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:71:14)
+    at C:\Users\al_sc\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\lifecycleHooks.js:122:24
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: An unexpected error has occurred.
