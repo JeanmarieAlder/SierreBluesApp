@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "sierre-blues-festival-v2",
+    "staging": "sierre-blues-festival-v2"
+  }
+}
