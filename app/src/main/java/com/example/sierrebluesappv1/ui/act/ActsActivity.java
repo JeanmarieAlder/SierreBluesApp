@@ -2,10 +2,12 @@ package com.example.sierrebluesappv1.ui.act;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,12 @@ import com.example.sierrebluesappv1.database.entity.ActEntity;
 import com.example.sierrebluesappv1.util.OnAsyncEventListener;
 import com.example.sierrebluesappv1.util.RecyclerViewItemClickListener;
 import com.example.sierrebluesappv1.viewmodel.act.ActsListViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +42,8 @@ public class ActsActivity extends AppCompatActivity {
 
     private ImageButton addButton;
 
+    private static final String TAG = "ActsActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +51,13 @@ public class ActsActivity extends AppCompatActivity {
         Toast.makeText(this, getString(R.string.message_delete_edit), Toast.LENGTH_LONG).show();
 
         addButton = findViewById(R.id.add_acts_button);
+
         addButton.setOnClickListener(view -> {
             addSelected();
         });
 
         //initializes recyclerview
-        rView = (RecyclerView)findViewById(R.id.recycler_view_acts);
+        rView = findViewById(R.id.recycler_view_acts);
         rView.setLayoutManager(new LinearLayoutManager(this));
         rView.setHasFixedSize(true); //size never changes
 
@@ -78,6 +89,7 @@ public class ActsActivity extends AppCompatActivity {
         });
 
         rView.setAdapter(adapter);
+
     }
 
     private void addSelected() {
@@ -86,20 +98,17 @@ public class ActsActivity extends AppCompatActivity {
         ActsActivity.this.startActivity(intent);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.action_about:
                 intent = new Intent(ActsActivity.this, AboutActivity.class);
                 ActsActivity.this.startActivity(intent);
@@ -118,7 +127,7 @@ public class ActsActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         int position = RecyclerAdapter.getPos();
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case 1:
                 //new edit window
                 Intent intent = new Intent(ActsActivity.this, ActEditActivity.class);
@@ -149,4 +158,17 @@ public class ActsActivity extends AppCompatActivity {
         }
         return super.onContextItemSelected(item);
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

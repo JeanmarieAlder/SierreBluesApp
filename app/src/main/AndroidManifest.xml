@@ -10,19 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ui.stage.StageDetailActivity"
-            android:parentActivityName=".ui.stage.StagesActivity"></activity>
+            android:parentActivityName=".ui.stage.StagesActivity" />
         <activity android:name=".ui.BaseActivity" />
         <activity
             android:name=".ui.act.ActDetailActivity"
             android:parentActivityName=".ui.act.ActsActivity" />
         <activity
             android:name=".ui.stage.StageEditActivity"
-            android:parentActivityName=".ui.stage.StagesActivity"/>
+            android:parentActivityName=".ui.stage.StagesActivity" />
         <activity
             android:name=".ui.act.ActEditActivity"
-            android:parentActivityName=".ui.act.ActsActivity"/>
+            android:parentActivityName=".ui.act.ActsActivity" />
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:label="@string/title_activity_settings"

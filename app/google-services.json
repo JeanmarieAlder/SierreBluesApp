@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "384971616897-k2bi7k4u6qelslpf1cs9h5p8n2s5i3h9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sierrebluesappv1",
+            "certificate_hash": "0f974005ffa4e58bbb34d6f21afb2c701111b19e"
+          }
+        },
+        {
           "client_id": "384971616897-shbq9l997el2o7bc7g3j8tmluod4n61h.apps.googleusercontent.com",
           "client_type": 3
         }
