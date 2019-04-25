@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.sierrebluesappv1.R;
+import com.example.sierrebluesappv1.ui.img.UploadActivity;
 import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.ui.act.ActsActivity;
 import com.example.sierrebluesappv1.ui.stage.StagesActivity;
@@ -63,4 +64,5 @@ public class DashboardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StagesActivity.class);
         startActivity(intent);
     }
+
 }

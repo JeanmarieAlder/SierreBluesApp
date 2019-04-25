@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sierrebluesappv1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".viewmodel.BaseApp"
         android:allowBackup="true"
@@ -10,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ui.img.GalleryActivity"
+            android:parentActivityName=".ui.img.GalleryActivity"/>
+        <activity
+            android:name=".ui.img.UploadActivity"
+            android:parentActivityName=".ui.nav.DashboardActivity" />
         <activity
             android:name=".ui.stage.StageDetailActivity"
             android:parentActivityName=".ui.stage.StagesActivity" />

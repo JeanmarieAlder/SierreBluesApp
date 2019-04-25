@@ -35,6 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/dashboard_title_view"
         android:layout_width="0dp"
@@ -50,6 +51,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dashborad_background"
         tools:ignore="UnknownId" />
+
+
 
     <ImageView
         android:id="@+id/dashborad_background"

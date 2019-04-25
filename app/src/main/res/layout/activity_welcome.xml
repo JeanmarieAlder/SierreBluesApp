@@ -20,6 +20,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/dashboard_button_upload"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_background"
+        android:onClick="uploadImage"
+        android:text="@string/upload_image"
+        android:textColor="@color/button_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_button_timetable" />
+
+    <Button
+        android:id="@+id/dashboard_button_gallery"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_background"
+        android:onClick="openGalleryActivity"
+        android:text="@string/view_uploads"
+        android:textColor="@color/button_text_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_button_upload" />
+
     <TextView
         android:id="@+id/welcome_title_view"
         android:layout_width="0dp"

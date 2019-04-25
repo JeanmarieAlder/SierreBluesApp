@@ -6,17 +6,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.sierrebluesappv1.R;
+import com.example.sierrebluesappv1.ui.img.GalleryActivity;
+import com.example.sierrebluesappv1.ui.img.UploadActivity;
 import com.example.sierrebluesappv1.ui.settings.SettingsActivity;
 import com.example.sierrebluesappv1.ui.userviews.TimetableActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
@@ -51,6 +57,16 @@ public class WelcomeActivity extends AppCompatActivity {
     public void timetableSelected(View view)
     {
         Intent intent = new Intent(this, TimetableActivity.class);
+        startActivity(intent);
+    }
+
+    public void uploadImage(View view) {
+        Intent intent = new Intent(this, UploadActivity.class);
+        startActivity(intent);
+    }
+
+    public void openGalleryActivity(View view) {
+        Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
     }
 }
