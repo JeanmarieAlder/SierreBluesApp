@@ -135,14 +135,9 @@
             private void uploadImg() {
                 if (mUri != null) {
                     // When uploaded, the image will have as a name the time it has been uploaded plus the extension of the file
-                    //FirebaseStorage storage = FirebaseStorage.getInstance();
+                   mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mUri));
 
-                    //StorageReference gsRef = storage.getReferenceFromUrl("gs://sierre-blues-festival-v2.appspot.com");
-
-                    //StorageReference imgRef = gsRef.child("images").child(System.currentTimeMillis() + "." + getFileExtension(mUri));
-                   StorageReference imgRef = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mUri));
-
-                 imgRef.putFile(mUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    mStorageRef.putFile(mUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                         @Override
                         public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                             if (!task.isSuccessful()) {
