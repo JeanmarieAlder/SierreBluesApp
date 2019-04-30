@@ -10,4 +10,4 @@ to acts but cannot modify or delete them.
 
 Language can be modified on the phone settings, not directly from the app settings.
 
-This project has been tested on a Google Pixel 2 Phone, it might render in a weird way is the screen is smaller.
+This project has been tested on a Google Pixel 2 Phone, it might render in a weird way if the screen is smaller.
